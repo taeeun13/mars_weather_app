@@ -2,6 +2,7 @@ package com.example.exercise;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +17,9 @@ import java.net.URL;
 
 public class MainActivity extends AppCompatActivity {
     private TextView mTextView;
+    private TextView marsMaxTempView;
+    private TextView marsMinTempView;
+
     private final String apiURL = "https://mars.nasa.gov/rss/api/?feed=weather&category=msl&feedtype=json";
 
     @Override
@@ -23,6 +27,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mTextView = findViewById(R.id.MarsDateText);
+        marsMaxTempView = findViewById(R.id.MarsMaxTemp);
+        marsMinTempView = findViewById(R.id.MarsMinTemp);
+
         new Thread(() -> {
             getJSON();
         }).start();
@@ -50,8 +57,12 @@ public class MainActivity extends AppCompatActivity {
             Log.d("data",jsonArr.getString(0));
             JSONObject object = jsonArr.getJSONObject(0);
             String date = object.getString("terrestrial_date");
+            String marsMaxTempStr = object.getString("max_temp");
+            String marsMinTempStr = object.getString("min_temp");
             Log.d("data", date);
             mTextView.setText(date);
+            marsMaxTempView.setText(marsMaxTempStr);
+            marsMinTempView.setText(marsMinTempStr);
         } catch  (Exception e) {
             e.printStackTrace();
         }

@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Exercise</string>
+    <string name="max_temp">max_temp</string>
+    <string name="min_temp">min_temp</string>
 </resources>
