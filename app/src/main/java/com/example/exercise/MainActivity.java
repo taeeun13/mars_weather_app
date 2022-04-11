@@ -61,8 +61,8 @@ public class MainActivity extends AppCompatActivity {
             String marsMinTempStr = object.getString("min_temp");
             Log.d("data", date);
             mTextView.setText(date);
-            marsMaxTempView.setText(marsMaxTempStr);
-            marsMinTempView.setText(marsMinTempStr);
+            marsMaxTempView.setText(marsMaxTempStr + "°");
+            marsMinTempView.setText(marsMinTempStr + "°");
         } catch  (Exception e) {
             e.printStackTrace();
         }
