@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
         ArrayList<Fragment> fragments = new ArrayList<>();
         fragments.add(FragmentMars.newInstance(0));
-        //fragments.add(Fragment2.newInstance(1));
+        fragments.add(FragmentEarth.newInstance(1));
 
         viewPager2 = findViewById(R.id.viewPager2);
 
