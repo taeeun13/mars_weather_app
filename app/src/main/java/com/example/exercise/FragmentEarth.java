@@ -17,7 +17,8 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-
+import java.text.SimpleDateFormat;
+import java.util.Date;
 public class FragmentEarth extends Fragment {
 
     TextView earthDateTextView;
@@ -50,12 +51,19 @@ public class FragmentEarth extends Fragment {
         earthMinTempView = v2.findViewById(R.id.EarthMinTemp);
         //loading API
 
+        getDate();
 
         new Thread(() -> {
             getJSON();
         }).start();
 
         return v2;
+    }
+    private void getDate() {
+        long now = System.currentTimeMillis();
+        Date date = new Date(now);
+        SimpleDateFormat dFormat = new SimpleDateFormat("yyyy-MM-dd");
+        earthDateTextView.setText(dFormat.format(date));
     }
 
     private void getJSON() {
