@@ -2,4 +2,6 @@
     <string name="app_name">MarsWeather</string>
     <string name="max_temp">max_temp</string>
     <string name="min_temp">min_temp</string>
+    <string name="mars">Mars</string>
+    <string name="earth">Earth</string>
 </resources>
