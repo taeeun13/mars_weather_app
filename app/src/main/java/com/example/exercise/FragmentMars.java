@@ -20,10 +20,10 @@ import java.net.URL;
 
 
 public class FragmentMars extends Fragment {
-    TextView mTextView;
+    TextView marsDateTextView;
     TextView marsMaxTempView;
     TextView marsMinTempView;
-    String apiURL = "https://mars.nasa.gov/rss/api/?feed=weather&category=msl&feedtype=json";
+    String marsApiURL = "https://mars.nasa.gov/rss/api/?feed=weather&category=msl&feedtype=json";
 
     public static FragmentMars newInstance(int number) {
         FragmentMars fragment1 = new FragmentMars();
@@ -42,7 +42,7 @@ public class FragmentMars extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_mars, container, false);
 
-        mTextView = v.findViewById(R.id.MarsDateText);
+        marsDateTextView = v.findViewById(R.id.MarsDateText);
         marsMaxTempView = v.findViewById(R.id.MarsMaxTemp);
         marsMinTempView = v.findViewById(R.id.MarsMinTemp);
 
@@ -55,7 +55,9 @@ public class FragmentMars extends Fragment {
 
     public void getJSON(){
         try {
-            URL url = new URL(apiURL);
+
+            //Loading API
+            URL url = new URL(marsApiURL);
             HttpURLConnection con = (HttpURLConnection)url.openConnection();
             con.setRequestMethod("GET");
             BufferedReader br;
@@ -68,6 +70,7 @@ public class FragmentMars extends Fragment {
             }
             br.close();
 
+            //Get Data
             String data = response.toString();
             Log.d("data", data);
             JSONObject jsonObj = new JSONObject(data);
@@ -78,7 +81,9 @@ public class FragmentMars extends Fragment {
             String marsMaxTempStr = object.getString("max_temp");
             String marsMinTempStr = object.getString("min_temp");
             Log.d("data", date);
-            mTextView.setText(date);
+
+            //setText
+            marsDateTextView.setText(date);
             marsMaxTempView.setText(marsMaxTempStr + "°");
             marsMinTempView.setText(marsMinTempStr + "°");
         } catch  (Exception e) {
