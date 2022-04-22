@@ -4,4 +4,11 @@
     <string name="min_temp">min_temp</string>
     <string name="mars">Mars</string>
     <string name="earth">Earth</string>
+    <string name="d0maxtemp">d0MaxTemp</string>
+    <string name="d1maxtemp">d1MaxTemp</string>
+    <string name="d2maxtemp">d2MaxTemp</string>
+    <string name="d3maxtemp">d3MaxTemp</string>
+    <string name="d4maxtemp">d4MaxTemp</string>
+    <string name="d5maxtemp">d5MaxTemp</string>
+    <string name="d6maxtemp">d6MaxTemp</string>
 </resources>
