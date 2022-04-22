@@ -11,4 +11,19 @@
     <string name="d4maxtemp">d4MaxTemp</string>
     <string name="d5maxtemp">d5MaxTemp</string>
     <string name="d6maxtemp">d6MaxTemp</string>
+    <string name="d0mintemp">d0MinTemp</string>
+    <string name="d1mintemp">d1MinTemp</string>
+    <string name="d2mintemp">d2MinTemp</string>
+    <string name="d3mintemp">d3MinTemp</string>
+    <string name="d4mintemp">d4MinTemp</string>
+    <string name="d5mintemp">d5MinTemp</string>
+    <string name="d6mintemp">d6MinTemp</string>
+    <string name="pressure">Pressure</string>
+    <string name="sunrise">Sunrise</string>
+    <string name="sunset">Sunset</string>
+    <string name="uv_condition">UV condition</string>
+    <string name="earthpressure">earthPressure</string>
+    <string name="earthsunrise">earthSunrise</string>
+    <string name="earthsunset">earthSunset</string>
+    <string name="earthuv">earthUV</string>
 </resources>

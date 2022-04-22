@@ -15,7 +15,7 @@
         android:textSize="40sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.736"
+        app:layout_constraintHorizontal_bias="0.71"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.163" />
@@ -30,7 +30,7 @@
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.323"
+        app:layout_constraintHorizontal_bias="0.288"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.164" />
@@ -39,7 +39,7 @@
         android:id="@+id/EarthDateText"
         android:layout_width="197dp"
         android:layout_height="0dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="96dp"
         android:textAlignment="center"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -62,15 +62,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TableLayout
-        android:stretchColumns="*"
-
         android:id="@+id/tableLayout2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="397dp"
+        android:layout_height="334dp"
         android:layout_marginBottom="16dp"
+        android:stretchColumns="*"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/EarthText">
 
@@ -146,6 +144,7 @@
                 android:textColor="#000000"
                 android:textSize="24sp" />
         </TableRow>
+
         <TableRow>
 
             <TextView
@@ -153,7 +152,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="d0"
+                android:layout_weight="1"
+                android:text="@string/d0mintemp"
                 android:textColor="#000000"
                 android:textSize="24sp" />
 
@@ -162,7 +162,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="d1"
+                android:layout_weight="1"
+                android:text="@string/d1mintemp"
                 android:textColor="#000000"
                 android:textSize="24sp" />
 
@@ -171,7 +172,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="d2"
+                android:layout_weight="1"
+                android:text="@string/d2mintemp"
                 android:textColor="#000000"
                 android:textSize="24sp" />
 
@@ -180,7 +182,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="d3"
+                android:layout_weight="1"
+                android:text="@string/d3mintemp"
                 android:textColor="#000000"
                 android:textSize="24sp" />
 
@@ -189,7 +192,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="d4"
+                android:layout_weight="1"
+                android:text="@string/d4mintemp"
                 android:textColor="#000000"
                 android:textSize="24sp" />
 
@@ -198,7 +202,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="d5"
+                android:layout_weight="1"
+                android:text="@string/d5mintemp"
                 android:textColor="#000000"
                 android:textSize="24sp" />
 
@@ -207,7 +212,94 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="d6"
+                android:layout_weight="1"
+                android:text="@string/d6mintemp"
+                android:textColor="#000000"
+                android:textSize="24sp" />
+        </TableRow>
+    </TableLayout>
+
+    <TableLayout
+        android:layout_width="392dp"
+        android:layout_height="199dp"
+        app:layout_constraintBottom_toTopOf="@+id/tableLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/EarthDateText"
+        app:layout_constraintVertical_bias="0.8">
+
+        <TableRow>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/pressure"
+                android:textColor="#000000"
+                android:textSize="24sp" />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/sunrise"
+                android:textColor="#000000"
+                android:textSize="24sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/sunset"
+                android:textColor="#000000"
+                android:textSize="24sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/uv_condition"
+                android:textColor="#000000"
+                android:textSize="24sp" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/earthpressure"
+                android:textColor="#000000"
+                android:textSize="24sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/earthsunrise"
+                android:textColor="#000000"
+                android:textSize="24sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/earthsunset"
+                android:textColor="#000000"
+                android:textSize="24sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/earthuv"
                 android:textColor="#000000"
                 android:textSize="24sp" />
         </TableRow>
