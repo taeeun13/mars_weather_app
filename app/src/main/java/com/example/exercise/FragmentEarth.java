@@ -19,6 +19,8 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 public class FragmentEarth extends Fragment {
 
@@ -53,7 +55,6 @@ public class FragmentEarth extends Fragment {
     TextView eFd4MinTempView;
     TextView eFd5MinTempView;
     TextView eFd6MinTempView;
-
 
     //******************************Declare APIs***********************************
     //String worldWeatherMapApiKey = "f7ba5036adfc078bc9d35926eb3b86ca";
@@ -152,7 +153,7 @@ public class FragmentEarth extends Fragment {
             earthMaxTempView.setText(earthMaxTempStr + "°");
             earthMinTempView.setText(earthMinTempStr + "°");
             eFd0MaxTempView.setText(earthMaxTempStr + "°");
-            eFd0MinTempView.setText(earthMaxTempStr + "°");
+            eFd0MinTempView.setText(earthMinTempStr + "°");
 
         } catch  (Exception e) {
             e.printStackTrace();
@@ -160,6 +161,7 @@ public class FragmentEarth extends Fragment {
 
         //******************************Forecast***********************************
         try {
+            //**Forecast API**
             URL URL = new URL(earthApiForecastURL);
             HttpURLConnection con = (HttpURLConnection)URL.openConnection();
             con.setRequestMethod("GET");
@@ -173,27 +175,36 @@ public class FragmentEarth extends Fragment {
             }
             br.close();
 
-            //MAX&MIN Temperature
             String Data = response.toString();
             Log.d("data", Data);
             JSONObject jsonObj = new JSONObject(Data);
             JSONArray jsonDailyArr = (JSONArray) jsonObj.get("daily");
-            Log.d("data",jsonDailyArr.getString(1));
-            JSONObject jsonDailyObj = jsonDailyArr.getJSONObject(1); //
-            JSONObject jsonTempObj = (JSONObject) jsonDailyObj.get("temp");
-            double earthMaxTemp = jsonTempObj.getDouble("max") - 273.15;
-            double earthMinTemp = jsonTempObj.getDouble("min") - 273.15;
 
-            earthMaxTemp = Math.round(earthMaxTemp * 10) / 10.0;
-            earthMinTemp = Math.round(earthMinTemp * 10) / 10.0;
-            String earthMaxTempStr = Double.toString(earthMaxTemp);
-            String earthMinTempStr = Double.toString(earthMinTemp);
-            eFd1MaxTempView.setText(earthMaxTempStr + "°");
-            //earthMinTempView.setText(earthMinTempStr + "°");
+            //**TextView ArrayList**
+            ArrayList<TextView> eFMaxTempArr = new ArrayList<>(
+                    Arrays.asList(eFd0MaxTempView, eFd1MaxTempView, eFd2MaxTempView, eFd3MaxTempView, eFd4MaxTempView, eFd5MaxTempView, eFd6MaxTempView)
+            );
+            ArrayList<TextView> eFMinTempArr = new ArrayList<>(
+                    Arrays.asList(eFd0MaxTempView, eFd1MinTempView, eFd2MinTempView, eFd3MinTempView, eFd4MinTempView, eFd5MinTempView, eFd6MinTempView)
+            );
 
+            //**setText**
+            for (int i=1; i<=6; ++i) {
+                Log.d("data", jsonDailyArr.getString(i));
+                JSONObject jsonDailyObj = jsonDailyArr.getJSONObject(i); //
+                JSONObject jsonTempObj = (JSONObject) jsonDailyObj.get("temp");
+                double earthMaxTemp = jsonTempObj.getDouble("max") - 273.15;
+                double earthMinTemp = jsonTempObj.getDouble("min") - 273.15;
+
+                earthMaxTemp = Math.round(earthMaxTemp * 10) / 10.0;
+                earthMinTemp = Math.round(earthMinTemp * 10) / 10.0;
+                String earthMaxTempStr = Double.toString(earthMaxTemp);
+                String earthMinTempStr = Double.toString(earthMinTemp);
+                eFMaxTempArr.get(i).setText(earthMaxTempStr + "°");
+                eFMinTempArr.get(i).setText(earthMinTempStr + "°");
+            }
         } catch  (Exception e) {
             e.printStackTrace();
         }
-
     }
 }
