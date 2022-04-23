@@ -28,17 +28,21 @@ public class FragmentEarth extends Fragment {
     //**Date**
     TextView earthDateTextView;
 
-    //**Today**
+    //***************Today****************
+    //**Temperature**
     TextView earthMaxTempView;
     TextView earthMinTempView;
+    //**Pressure, Sunrise, Sunset and UV Condition**
+    TextView earthPressureView;
+    TextView earthSunriseView;
+    TextView earthSunsetView;
+    TextView earthUVView;
 
-    //**Forecast**
-
-    //Notation
-    //eF == earth Forecast
-    //d0 == d+0, d1 == d+1, d2 == d+2, ...
-
-    //*MaxTemp*
+    //**************Forecast**************
+    //*Notation*
+    //  eF == earth Forecast
+    //  d0 == d+0, d1 == d+1, d2 == d+2, ..., d6 == d+6
+    //**MaxTemp**
     TextView eFd0MaxTempView;
     TextView eFd1MaxTempView;
     TextView eFd2MaxTempView;
@@ -47,7 +51,7 @@ public class FragmentEarth extends Fragment {
     TextView eFd5MaxTempView;
     TextView eFd6MaxTempView;
 
-    //*MinTemp
+    //**MinTemp**
     TextView eFd0MinTempView;
     TextView eFd1MinTempView;
     TextView eFd2MinTempView;
@@ -55,6 +59,7 @@ public class FragmentEarth extends Fragment {
     TextView eFd4MinTempView;
     TextView eFd5MinTempView;
     TextView eFd6MinTempView;
+
 
     //******************************Declare APIs***********************************
     //String worldWeatherMapApiKey = "f7ba5036adfc078bc9d35926eb3b86ca";
@@ -83,10 +88,17 @@ public class FragmentEarth extends Fragment {
         //**date**
         earthDateTextView = v2.findViewById(R.id.EarthDateText);
 
-        //**Today**
+        //********Today*******
+        //**Temperature**
         earthMaxTempView = v2.findViewById(R.id.EarthMaxTemp);
         earthMinTempView = v2.findViewById(R.id.EarthMinTemp);
+        //**Pressure, Sunrise, Sunset and UV Condition**
+        earthPressureView = v2.findViewById(R.id.EarthPressure);
+        earthSunriseView = v2.findViewById(R.id.EarthSunrise);
+        earthSunsetView = v2.findViewById(R.id.EarthSunset);
+        earthUVView = v2.findViewById(R.id.EarthUV);
 
+        //********Forecast*******
         //**Forecast Max Temperature**
         eFd0MaxTempView = v2.findViewById(R.id.d0MaxTemp);
         eFd1MaxTempView = v2.findViewById(R.id.d1MaxTemp);
@@ -95,7 +107,6 @@ public class FragmentEarth extends Fragment {
         eFd4MaxTempView = v2.findViewById(R.id.d4MaxTemp);
         eFd5MaxTempView = v2.findViewById(R.id.d5MaxTemp);
         eFd6MaxTempView = v2.findViewById(R.id.d6MaxTemp);
-
         //**Forecast Min Temperature**
         eFd0MinTempView = v2.findViewById(R.id.d0MinTemp);
         eFd1MinTempView = v2.findViewById(R.id.d1MinTemp);
@@ -125,6 +136,7 @@ public class FragmentEarth extends Fragment {
     private void getJSON() {
         //******************************Today***********************************
         try {
+            //get data
             URL URL = new URL(earthApiTodayURL);
             HttpURLConnection con = (HttpURLConnection)URL.openConnection();
             con.setRequestMethod("GET");
@@ -138,11 +150,13 @@ public class FragmentEarth extends Fragment {
             }
             br.close();
 
-            //MAX&MIN Temperature
             String earthData = response.toString();
             Log.d("data", earthData);
             JSONObject earthJsonObj = new JSONObject(earthData);
             JSONObject earthJsonMainObj = (JSONObject) earthJsonObj.get("main");
+            JSONObject earthJsonSysObj = (JSONObject) earthJsonObj.get("sys");
+
+            //MAX&MIN Temperature
             double earthMaxTemp = earthJsonMainObj.getDouble("temp_max") - 273.15;
             double earthMinTemp = earthJsonMainObj.getDouble("temp_min")  - 273.15;
 
@@ -159,7 +173,7 @@ public class FragmentEarth extends Fragment {
             e.printStackTrace();
         }
 
-        //******************************Forecast***********************************
+        //*****************************************************************
         try {
             //**Forecast API**
             URL URL = new URL(earthApiForecastURL);
@@ -178,18 +192,19 @@ public class FragmentEarth extends Fragment {
             String Data = response.toString();
             Log.d("data", Data);
             JSONObject jsonObj = new JSONObject(Data);
-            JSONArray jsonDailyArr = (JSONArray) jsonObj.get("daily");
 
+
+            //**********************Forecast************************
+            JSONArray jsonDailyArr = (JSONArray) jsonObj.get("daily");
             //**TextView ArrayList**
             ArrayList<TextView> eFMaxTempArr = new ArrayList<>(
                     Arrays.asList(eFd0MaxTempView, eFd1MaxTempView, eFd2MaxTempView, eFd3MaxTempView, eFd4MaxTempView, eFd5MaxTempView, eFd6MaxTempView)
             );
             ArrayList<TextView> eFMinTempArr = new ArrayList<>(
-                    Arrays.asList(eFd0MaxTempView, eFd1MinTempView, eFd2MinTempView, eFd3MinTempView, eFd4MinTempView, eFd5MinTempView, eFd6MinTempView)
+                    Arrays.asList(eFd0MinTempView, eFd1MinTempView, eFd2MinTempView, eFd3MinTempView, eFd4MinTempView, eFd5MinTempView, eFd6MinTempView)
             );
-
             //**setText**
-            for (int i=1; i<=6; ++i) {
+            for (int i=0; i<=6; ++i) {
                 Log.d("data", jsonDailyArr.getString(i));
                 JSONObject jsonDailyObj = jsonDailyArr.getJSONObject(i); //
                 JSONObject jsonTempObj = (JSONObject) jsonDailyObj.get("temp");
@@ -202,7 +217,22 @@ public class FragmentEarth extends Fragment {
                 String earthMinTempStr = Double.toString(earthMinTemp);
                 eFMaxTempArr.get(i).setText(earthMaxTempStr + "°");
                 eFMinTempArr.get(i).setText(earthMinTempStr + "°");
+
             }
+
+            //******Pressure, Sunrise, Sunset and UV Condition******
+            JSONObject jsonCurrentObj = (JSONObject) jsonObj.get("current");
+            String earthPressure = jsonCurrentObj.getString("pressure");
+            String earthSunrise = jsonCurrentObj.getString("sunrise");
+            String earthSunset = jsonCurrentObj.getString("sunset");
+            double earthUV = jsonCurrentObj.getDouble("uvi");
+            String earthUVStr = Double.toString(earthUV);
+
+            earthPressureView.setText(earthPressure);
+            earthSunriseView.setText(earthSunrise);
+            earthSunsetView.setText(earthSunset);
+            earthUVView.setText(earthUVStr);
+
         } catch  (Exception e) {
             e.printStackTrace();
         }
