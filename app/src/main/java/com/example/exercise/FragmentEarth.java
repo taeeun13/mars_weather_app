@@ -158,7 +158,7 @@ public class FragmentEarth extends Fragment {
 
             //MAX&MIN Temperature
             double earthMaxTemp = earthJsonMainObj.getDouble("temp_max") - 273.15;
-            double earthMinTemp = earthJsonMainObj.getDouble("temp_min")  - 273.15;
+            double earthMinTemp = earthJsonMainObj.getDouble("temp_min") - 273.15;
 
             earthMaxTemp = Math.round(earthMaxTemp * 10) / 10.0;
             earthMinTemp = Math.round(earthMinTemp * 10) / 10.0;
@@ -173,7 +173,7 @@ public class FragmentEarth extends Fragment {
             e.printStackTrace();
         }
 
-        //*****************************************************************
+        //*******************************Forecast**********************************
         try {
             //**Forecast API**
             URL URL = new URL(earthApiForecastURL);
@@ -221,16 +221,22 @@ public class FragmentEarth extends Fragment {
             }
 
             //******Pressure, Sunrise, Sunset and UV Condition******
+            //+32400L: UTC -> KST, 32400sec = 9hour
+            //*1000: msec -> sec
             JSONObject jsonCurrentObj = (JSONObject) jsonObj.get("current");
             String earthPressure = jsonCurrentObj.getString("pressure");
-            String earthSunrise = jsonCurrentObj.getString("sunrise");
-            String earthSunset = jsonCurrentObj.getString("sunset");
+            long earthSunriseMillis = (jsonCurrentObj.getLong("sunrise") + 32400L)* 1000L;
+            long earthSunsetMillis = (jsonCurrentObj.getLong("sunset") + 32400L) * 1000L;
             double earthUV = jsonCurrentObj.getDouble("uvi");
             String earthUVStr = Double.toString(earthUV);
 
+            SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
+            Date earthSunrise = new Date(earthSunriseMillis);
+            Date earthSunset = new Date(earthSunsetMillis);
+
             earthPressureView.setText(earthPressure);
-            earthSunriseView.setText(earthSunrise);
-            earthSunsetView.setText(earthSunset);
+            earthSunriseView.setText(timeFormat.format(earthSunrise));
+            earthSunsetView.setText(timeFormat.format(earthSunset));
             earthUVView.setText(earthUVStr);
 
         } catch  (Exception e) {
