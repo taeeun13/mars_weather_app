@@ -17,6 +17,8 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 
 public class FragmentMars extends Fragment {
@@ -29,6 +31,23 @@ public class FragmentMars extends Fragment {
     TextView marsSunriseView;
     TextView marsSunsetView;
     TextView marsUVView;
+    TextView mFd0MaxTempView;
+    TextView mFd1MaxTempView;
+    TextView mFd2MaxTempView;
+    TextView mFd3MaxTempView;
+    TextView mFd4MaxTempView;
+    TextView mFd5MaxTempView;
+    TextView mFd6MaxTempView;
+
+    //**MinTemp**
+    TextView mFd0MinTempView;
+    TextView mFd1MinTempView;
+    TextView mFd2MinTempView;
+    TextView mFd3MinTempView;
+    TextView mFd4MinTempView;
+    TextView mFd5MinTempView;
+    TextView mFd6MinTempView;
+
 
     public static FragmentMars newInstance(int number) {
         FragmentMars fragment1 = new FragmentMars();
@@ -54,6 +73,22 @@ public class FragmentMars extends Fragment {
         marsSunriseView = v.findViewById(R.id.MarsSunrise);
         marsSunsetView = v.findViewById(R.id.MarsSunset);
         marsUVView = v.findViewById(R.id.MarsUV);
+
+        mFd0MaxTempView = v.findViewById(R.id.md0MaxTemp);
+        mFd1MaxTempView = v.findViewById(R.id.md1MaxTemp);
+        mFd2MaxTempView = v.findViewById(R.id.md2MaxTemp);
+        mFd3MaxTempView = v.findViewById(R.id.md3MaxTemp);
+        mFd4MaxTempView = v.findViewById(R.id.md4MaxTemp);
+        mFd5MaxTempView = v.findViewById(R.id.md5MaxTemp);
+        mFd6MaxTempView = v.findViewById(R.id.md6MaxTemp);
+
+        mFd0MinTempView = v.findViewById(R.id.md0MinTemp);
+        mFd1MinTempView = v.findViewById(R.id.md1MinTemp);
+        mFd2MinTempView = v.findViewById(R.id.md2MinTemp);
+        mFd3MinTempView = v.findViewById(R.id.md3MinTemp);
+        mFd4MinTempView = v.findViewById(R.id.md4MinTemp);
+        mFd5MinTempView = v.findViewById(R.id.md5MinTemp);
+        mFd6MinTempView = v.findViewById(R.id.md6MinTemp);
 
         new Thread(() -> {
             getJSON();
@@ -103,6 +138,23 @@ public class FragmentMars extends Fragment {
             marsSunriseView.setText(marsSunrise);
             marsSunsetView.setText(marsSunset);
             marsUVView.setText(marsUV);
+
+            ArrayList<TextView> mFMaxTempArr = new ArrayList<>(
+                    Arrays.asList(mFd0MaxTempView, mFd1MaxTempView, mFd2MaxTempView, mFd3MaxTempView, mFd4MaxTempView, mFd5MaxTempView, mFd6MaxTempView)
+            );
+            ArrayList<TextView> mFMinTempArr = new ArrayList<>(
+                    Arrays.asList(mFd0MinTempView, mFd1MinTempView, mFd2MinTempView, mFd3MinTempView, mFd4MinTempView, mFd5MinTempView, mFd6MinTempView)
+            );
+
+
+
+            for (int i = 0; i <= 6; i++) {
+                JSONObject obj = jsonArr.getJSONObject(i);
+                String maxTemp = obj.getString("max_temp");
+                String minTemp = obj.getString("min_temp");
+                mFMaxTempArr.get(i).setText(maxTemp + "°");
+                mFMinTempArr.get(i).setText(minTemp + "°");
+            }
 
         } catch  (Exception e) {
             e.printStackTrace();

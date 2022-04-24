@@ -150,4 +150,204 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/MarsMinTemp" />
 
+    <TextView
+        android:id="@+id/md0MaxTemp"
+        android:layout_width="58dp"
+        android:layout_height="34dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="@string/d0maxtemp"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/md0MinTemp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/md1MaxTemp" />
+
+    <TextView
+        android:id="@+id/md1MaxTemp"
+        android:layout_width="64dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginBottom="8dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="@string/d1maxtemp"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/md1MinTemp"
+        app:layout_constraintStart_toEndOf="@+id/md2MaxTemp" />
+
+    <TextView
+        android:id="@+id/md2MaxTemp"
+        android:layout_width="59dp"
+        android:layout_height="46dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="@string/d2maxtemp"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/md2MinTemp"
+        app:layout_constraintStart_toEndOf="@+id/md3MaxTemp" />
+
+    <TextView
+        android:id="@+id/md3MaxTemp"
+        android:layout_width="53dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginBottom="8dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="@string/d3maxtemp"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/md3MinTemp"
+        app:layout_constraintStart_toEndOf="@+id/md4MaxTemp" />
+
+    <TextView
+        android:id="@+id/md4MaxTemp"
+        android:layout_width="55dp"
+        android:layout_height="35dp"
+        android:layout_marginBottom="4dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="@string/d4maxtemp"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/md4MinTemp"
+        app:layout_constraintStart_toEndOf="@+id/md5MaxTemp" />
+
+    <TextView
+        android:id="@+id/md5MaxTemp"
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="@string/d5maxtemp"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/md5MinTemp"
+        app:layout_constraintStart_toEndOf="@+id/md6MaxTemp" />
+
+    <TextView
+        android:id="@+id/md6MaxTemp"
+        android:layout_width="63dp"
+        android:layout_height="41dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="@string/d6maxtemp"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/md6MinTemp"
+        app:layout_constraintEnd_toStartOf="@+id/md5MaxTemp"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/md0MinTemp"
+        android:layout_width="54dp"
+        android:layout_height="47dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="@string/d0mintemp"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/md1MinTemp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.703" />
+
+    <TextView
+        android:id="@+id/md1MinTemp"
+        android:layout_width="49dp"
+        android:layout_height="43dp"
+        android:layout_marginEnd="44dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="@string/d1mintemp"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/md2MinTemp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.718" />
+
+    <TextView
+        android:id="@+id/md2MinTemp"
+        android:layout_width="56dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="4dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="@string/d2mintemp"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/md3MinTemp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.72" />
+
+    <TextView
+        android:id="@+id/md3MinTemp"
+        android:layout_width="57dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="4dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="@string/d3mintemp"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/md4MinTemp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.707" />
+
+    <TextView
+        android:id="@+id/md4MinTemp"
+        android:layout_width="55dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="4dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="@string/d4mintemp"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/md5MinTemp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.7" />
+
+    <TextView
+        android:id="@+id/md5MinTemp"
+        android:layout_width="60dp"
+        android:layout_height="41dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="@string/d5mintemp"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/md6MinTemp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.7"
+        tools:layout_editor_absoluteX="63dp" />
+
+    <TextView
+        android:id="@+id/md6MinTemp"
+        android:layout_width="59dp"
+        android:layout_height="42dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="@string/d6mintemp"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/md5MinTemp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.702" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
