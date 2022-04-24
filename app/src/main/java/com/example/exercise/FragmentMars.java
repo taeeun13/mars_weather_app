@@ -25,6 +25,11 @@ public class FragmentMars extends Fragment {
     TextView marsMinTempView;
     String marsApiURL = "https://mars.nasa.gov/rss/api/?feed=weather&category=msl&feedtype=json";
 
+    TextView marsPressureView;
+    TextView marsSunriseView;
+    TextView marsSunsetView;
+    TextView marsUVView;
+
     public static FragmentMars newInstance(int number) {
         FragmentMars fragment1 = new FragmentMars();
         Bundle bundle = new Bundle();
@@ -45,6 +50,10 @@ public class FragmentMars extends Fragment {
         marsDateTextView = v.findViewById(R.id.MarsDateText);
         marsMaxTempView = v.findViewById(R.id.MarsMaxTemp);
         marsMinTempView = v.findViewById(R.id.MarsMinTemp);
+        marsPressureView = v.findViewById(R.id.MarsPressure);
+        marsSunriseView = v.findViewById(R.id.MarsSunrise);
+        marsSunsetView = v.findViewById(R.id.MarsSunset);
+        marsUVView = v.findViewById(R.id.MarsUV);
 
         new Thread(() -> {
             getJSON();
@@ -80,12 +89,21 @@ public class FragmentMars extends Fragment {
             String date = object.getString("terrestrial_date");
             String marsMaxTempStr = object.getString("max_temp");
             String marsMinTempStr = object.getString("min_temp");
+            String marsPressure = object.getString("pressure");
+            String marsSunrise = object.getString("sunrise");
+            String marsSunset = object.getString("sunset");
+            String marsUV = object.getString("local_uv_irradiance_index");
             Log.d("data", date);
 
             //setText
             marsDateTextView.setText(date);
             marsMaxTempView.setText(marsMaxTempStr + "°");
             marsMinTempView.setText(marsMinTempStr + "°");
+            marsPressureView.setText(marsPressure);
+            marsSunriseView.setText(marsSunrise);
+            marsSunsetView.setText(marsSunset);
+            marsUVView.setText(marsUV);
+
         } catch  (Exception e) {
             e.printStackTrace();
         }
