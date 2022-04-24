@@ -48,6 +48,15 @@ public class FragmentMars extends Fragment {
     TextView mFd5MinTempView;
     TextView mFd6MinTempView;
 
+    //Date
+    TextView mFd0DateView;
+    TextView mFd1DateView;
+    TextView mFd2DateView;
+    TextView mFd3DateView;
+    TextView mFd4DateView;
+    TextView mFd5DateView;
+    TextView mFd6DateView;
+
 
     public static FragmentMars newInstance(int number) {
         FragmentMars fragment1 = new FragmentMars();
@@ -89,6 +98,14 @@ public class FragmentMars extends Fragment {
         mFd4MinTempView = v.findViewById(R.id.md4MinTemp);
         mFd5MinTempView = v.findViewById(R.id.md5MinTemp);
         mFd6MinTempView = v.findViewById(R.id.md6MinTemp);
+
+        mFd0DateView = v.findViewById(R.id.md0Date);
+        mFd1DateView = v.findViewById(R.id.md1Date);
+        mFd2DateView = v.findViewById(R.id.md2Date);
+        mFd3DateView = v.findViewById(R.id.md3Date);
+        mFd4DateView = v.findViewById(R.id.md4Date);
+        mFd5DateView = v.findViewById(R.id.md5Date);
+        mFd6DateView = v.findViewById(R.id.md6Date);
 
         new Thread(() -> {
             getJSON();
@@ -146,14 +163,19 @@ public class FragmentMars extends Fragment {
                     Arrays.asList(mFd0MinTempView, mFd1MinTempView, mFd2MinTempView, mFd3MinTempView, mFd4MinTempView, mFd5MinTempView, mFd6MinTempView)
             );
 
+            ArrayList<TextView> mFDateArr = new ArrayList<>(
+                    Arrays.asList(mFd0DateView, mFd1DateView, mFd2DateView, mFd3DateView, mFd4DateView, mFd5DateView, mFd6DateView)
+            );
 
 
             for (int i = 0; i <= 6; i++) {
                 JSONObject obj = jsonArr.getJSONObject(i);
                 String maxTemp = obj.getString("max_temp");
                 String minTemp = obj.getString("min_temp");
+                String fdate = obj.getString("terrestrial_date").substring(5);
                 mFMaxTempArr.get(i).setText(maxTemp + "°");
                 mFMinTempArr.get(i).setText(minTemp + "°");
+                mFDateArr.get(i).setText(fdate);
             }
 
         } catch  (Exception e) {

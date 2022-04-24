@@ -161,14 +161,15 @@
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/md0MinTemp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/md1MaxTemp" />
 
     <TextView
         android:id="@+id/md1MaxTemp"
-        android:layout_width="64dp"
+        android:layout_width="49dp"
         android:layout_height="36dp"
         android:layout_marginStart="4dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="4dp"
         android:layout_weight="1"
         android:gravity="center"
         android:text="@string/d1maxtemp"
@@ -179,8 +180,10 @@
 
     <TextView
         android:id="@+id/md2MaxTemp"
-        android:layout_width="59dp"
-        android:layout_height="46dp"
+        android:layout_width="62dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginBottom="4dp"
         android:layout_weight="1"
         android:gravity="center"
         android:text="@string/d2maxtemp"
@@ -242,20 +245,20 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/md0MinTemp"
-        android:layout_width="54dp"
-        android:layout_height="47dp"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:text="@string/d0mintemp"
-        android:textColor="#000000"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/md1MinTemp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.703" />
+    android:id="@+id/md0MinTemp"
+    android:layout_width="54dp"
+    android:layout_height="47dp"
+    android:layout_weight="1"
+    android:gravity="center"
+    android:text="@string/d0mintemp"
+    android:textColor="#000000"
+    android:textSize="24sp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="1.0"
+    app:layout_constraintStart_toEndOf="@+id/md1MinTemp"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0.703" />
 
     <TextView
         android:id="@+id/md1MinTemp"
@@ -269,10 +272,10 @@
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.222"
         app:layout_constraintStart_toEndOf="@+id/md2MinTemp"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.718" />
+        app:layout_constraintVertical_bias="0.694" />
 
     <TextView
         android:id="@+id/md2MinTemp"
@@ -287,7 +290,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/md3MinTemp"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.72" />
+        app:layout_constraintVertical_bias="0.696" />
 
     <TextView
         android:id="@+id/md3MinTemp"
@@ -348,6 +351,99 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.702" />
+
+    <TextView
+        android:id="@+id/md0Date"
+        android:layout_width="60dp"
+        android:layout_height="43dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.428"
+        app:layout_constraintStart_toEndOf="@+id/md1Date"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.77" />
+
+    <TextView
+        android:id="@+id/md1Date"
+        android:layout_width="57dp"
+        android:layout_height="45dp"
+        android:layout_marginEnd="44dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintStart_toEndOf="@+id/md2Date"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.765" />
+
+    <TextView
+        android:id="@+id/md2Date"
+        android:layout_width="56dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="4dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/md3Date"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.765" />
+
+    <TextView
+        android:id="@+id/md3Date"
+        android:layout_width="57dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="4dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/md4Date"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.768" />
+
+    <TextView
+        android:id="@+id/md4Date"
+        android:layout_width="55dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="4dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/md5Date"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.765" />
+
+    <TextView
+        android:id="@+id/md5Date"
+        android:layout_width="60dp"
+        android:layout_height="41dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/md6Date"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.765" />
+
+    <TextView
+        android:id="@+id/md6Date"
+        android:layout_width="54dp"
+        android:layout_height="40dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/md5Date"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.766" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
