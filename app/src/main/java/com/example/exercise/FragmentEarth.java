@@ -59,6 +59,12 @@ public class FragmentEarth extends Fragment {
     TextView eFd4MinTempView;
     TextView eFd5MinTempView;
     TextView eFd6MinTempView;
+    // **Date**
+    TextView eFd0DTView;
+    TextView eFd1DTView;
+    // **Test**
+    TextView eFd0TestView;
+    TextView eFd1TestView;
 
 
     //******************************Declare APIs***********************************
@@ -115,6 +121,12 @@ public class FragmentEarth extends Fragment {
         eFd4MinTempView = v2.findViewById(R.id.d4MinTemp);
         eFd5MinTempView = v2.findViewById(R.id.d5MinTemp);
         eFd6MinTempView = v2.findViewById(R.id.d6MinTemp);
+        // **Forecast Date
+        eFd0DTView = v2.findViewById(R.id.d0day);
+        eFd1DTView = v2.findViewById(R.id.d1day);
+        // **Forecast Date
+
+
 
         getDate();
 
@@ -164,10 +176,10 @@ public class FragmentEarth extends Fragment {
             earthMinTemp = Math.round(earthMinTemp * 10) / 10.0;
             String earthMaxTempStr = Double.toString(earthMaxTemp);
             String earthMinTempStr = Double.toString(earthMinTemp);
-            earthMaxTempView.setText(earthMaxTempStr + "°");
-            earthMinTempView.setText(earthMinTempStr + "°");
-            eFd0MaxTempView.setText(earthMaxTempStr + "°");
-            eFd0MinTempView.setText(earthMinTempStr + "°");
+            earthMaxTempView.setText(earthMaxTempStr + "°C");
+            earthMinTempView.setText(earthMinTempStr + "°C");
+            eFd0MaxTempView.setText(earthMaxTempStr + "°C");
+            eFd0MinTempView.setText(earthMinTempStr + "°C");
 
         } catch  (Exception e) {
             e.printStackTrace();
@@ -203,8 +215,14 @@ public class FragmentEarth extends Fragment {
             ArrayList<TextView> eFMinTempArr = new ArrayList<>(
                     Arrays.asList(eFd0MinTempView, eFd1MinTempView, eFd2MinTempView, eFd3MinTempView, eFd4MinTempView, eFd5MinTempView, eFd6MinTempView)
             );
+            ArrayList<TextView> eFDTArr = new ArrayList<>(
+                    Arrays.asList(eFd0DTView, eFd1DTView)
+            );
+            ArrayList<TextView> eFTestArr = new ArrayList<>(
+                    Arrays.asList(eFd0TestView, eFd1TestView)
+            );
             //**setText**
-            for (int i=0; i<=6; ++i) {
+            for (int i=1; i<=6; ++i) {
                 Log.d("data", jsonDailyArr.getString(i));
                 JSONObject jsonDailyObj = jsonDailyArr.getJSONObject(i); //
                 JSONObject jsonTempObj = (JSONObject) jsonDailyObj.get("temp");
@@ -215,8 +233,16 @@ public class FragmentEarth extends Fragment {
                 earthMinTemp = Math.round(earthMinTemp * 10) / 10.0;
                 String earthMaxTempStr = Double.toString(earthMaxTemp);
                 String earthMinTempStr = Double.toString(earthMinTemp);
-                eFMaxTempArr.get(i).setText(earthMaxTempStr + "°");
-                eFMinTempArr.get(i).setText(earthMinTempStr + "°");
+                eFMaxTempArr.get(i).setText(earthMaxTempStr + "°C");
+                eFMinTempArr.get(i).setText(earthMinTempStr + "°C");
+
+                if (i<=1) {
+                    long forecastDTMillis = (jsonDailyObj.getLong("dt") + 32400L)* 1000L;
+                    SimpleDateFormat timeFormat = new SimpleDateFormat("MM/dd");
+                    Date forecastDT = new Date(forecastDTMillis);
+                    eFDTArr.get(i).setText(timeFormat.format(forecastDT));
+                    eFTestArr.get(i).setText(timeFormat.format(forecastDT));
+                }
 
             }
 
