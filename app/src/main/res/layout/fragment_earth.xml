@@ -15,10 +15,10 @@
         android:textSize="40sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.71"
+        app:layout_constraintHorizontal_bias="0.711"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.163" />
+        app:layout_constraintVertical_bias="0.164" />
 
     <TextView
         android:id="@+id/EarthMaxTemp"
@@ -60,214 +60,124 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
-    <TableLayout
-        android:id="@+id/tableLayout3"
-        android:layout_width="392dp"
-        android:layout_height="169dp"
-        android:layout_marginTop="160dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="@string/pressure"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/EarthPressure"
+        app:layout_constraintEnd_toStartOf="@+id/textView5"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/EarthDateText"
-        app:layout_constraintVertical_bias="0.0">
-
-        <TableRow>
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="@string/pressure"
-                android:textColor="#000000"
-                android:textSize="24sp" />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="@string/sunrise"
-                android:textColor="#000000"
-                android:textSize="24sp" />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="@string/sunset"
-                android:textColor="#000000"
-                android:textSize="24sp" />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="@string/uv_condition"
-                android:textColor="#000000"
-                android:textSize="24sp" />
-        </TableRow>
-
-        <TableRow>
-
-            <TextView
-                android:id="@+id/EarthPressure"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="@string/earthpressure"
-                android:textColor="#000000"
-                android:textSize="24sp" />
-
-            <TextView
-                android:id="@+id/EarthSunrise"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="@string/earthsunrise"
-                android:textColor="#000000"
-                android:textSize="24sp" />
-
-            <TextView
-                android:id="@+id/EarthSunset"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="@string/earthsunset"
-                android:textColor="#000000"
-                android:textSize="24sp" />
-
-            <TextView
-                android:id="@+id/EarthUV"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="@string/earthuv"
-                android:textColor="#000000"
-                android:textSize="24sp" />
-        </TableRow>
-
-    </TableLayout>
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.989" />
 
     <TextView
-        android:id="@+id/d5MaxTemp"
-        android:layout_width="48dp"
+        android:id="@+id/textView5"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="288dp"
+        android:layout_marginEnd="4dp"
         android:layout_weight="1"
         android:gravity="center"
-        android:text="@string/d5maxtemp"
+        android:text="@string/sunrise"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toStartOf="@+id/textView6"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="288dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="@string/sunset"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toStartOf="@+id/textView7"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="288dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="@string/uv_condition"
         android:textColor="#000000"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/d3MaxTemp"
-        app:layout_constraintTop_toTopOf="@+id/d3MaxTemp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/d6MaxTemp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/EarthPressure"
+        android:layout_width="110dp"
+        android:layout_height="31dp"
+        android:layout_marginTop="320dp"
+        android:layout_marginEnd="2dp"
         android:layout_weight="1"
         android:gravity="center"
-        android:text="@string/d6maxtemp"
+        android:text="@string/earthpressure"
         android:textColor="#000000"
         android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/d5MaxTemp"
-        app:layout_constraintTop_toTopOf="@+id/d3MaxTemp" />
-
-    <TextView
-        android:id="@+id/d3MinTemp"
-        android:layout_width="48dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="172dp"
-        android:layout_marginTop="116dp"
-        android:layout_marginEnd="173dp"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:text="@string/d3mintemp"
-        android:textAlignment="center"
-        android:textColor="#000000"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintEnd_toStartOf="@+id/EarthSunrise"
+        app:layout_constraintHorizontal_bias="0.227"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/d3MaxTemp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
+        android:id="@+id/EarthSunrise"
+        android:layout_width="92dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="8dp"
         android:layout_weight="1"
         android:gravity="center"
-        android:text="d4d"
+        android:text="@string/earthsunrise"
         android:textColor="#000000"
         android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/d5day"
-        app:layout_constraintStart_toEndOf="@+id/d3day"
-        app:layout_constraintTop_toBottomOf="@+id/d4MinTemp" />
+        app:layout_constraintEnd_toStartOf="@+id/EarthSunset"
+        app:layout_constraintTop_toTopOf="@+id/textView5" />
+
 
     <TextView
-        android:id="@+id/d3day"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="176dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="177dp"
+        android:id="@+id/EarthSunset"
+        android:layout_width="97dp"
+        android:layout_height="31dp"
+        android:layout_marginEnd="8dp"
         android:layout_weight="1"
         android:gravity="center"
-        android:text="d3d"
-        android:textAlignment="center"
+        android:text="@string/earthsunset"
         android:textColor="#000000"
         android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/EarthUV"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+    <TextView
+        android:id="@+id/EarthUV"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="@string/earthuv"
+        android:textColor="#000000"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/d3MinTemp"
-        app:layout_constraintVertical_bias="0.503" />
+        app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
-    <TextView
-        android:id="@+id/d2day"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:text="d2d"
-        android:textColor="#000000"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/d3day"
-        app:layout_constraintStart_toEndOf="@+id/d1day"
-        app:layout_constraintTop_toBottomOf="@+id/d2MinTemp" />
 
-    <TextView
-        android:id="@+id/d1day"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:text="@string/d1day"
-        android:textColor="#000000"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/d3day"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/d1MinTemp" />
 
     <TextView
         android:id="@+id/d0day"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="63dp"
+        android:layout_height="30dp"
         android:layout_marginTop="4dp"
         android:layout_weight="1"
         android:gravity="center"
@@ -280,25 +190,77 @@
         app:layout_constraintTop_toBottomOf="@+id/d0MinTemp" />
 
     <TextView
-        android:id="@+id/d6day"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/d1day"
+        android:layout_width="52dp"
+        android:layout_height="30dp"
         android:layout_marginTop="4dp"
         android:layout_weight="1"
         android:gravity="center"
-        android:text="d6d"
+        android:text="@string/d1day"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/d3day"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/d1MinTemp" />
+
+    <TextView
+        android:id="@+id/d2day"
+        android:layout_width="61dp"
+        android:layout_height="31dp"
+        android:layout_marginTop="4dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="d2d"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/d3day"
+        app:layout_constraintStart_toEndOf="@+id/d1day"
+        app:layout_constraintTop_toBottomOf="@+id/d2MinTemp" />
+
+    <TextView
+        android:id="@+id/d3day"
+        android:layout_width="62dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="176dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="177dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="d3d"
+        android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.517"
-        app:layout_constraintStart_toEndOf="@+id/d5day"
-        app:layout_constraintTop_toBottomOf="@+id/d6MinTemp" />
+        app:layout_constraintHorizontal_bias="0.705"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/d3MinTemp"
+        app:layout_constraintVertical_bias="0.502" />
+
+    <TextView
+        android:id="@+id/d4day"
+        android:layout_width="58dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="4dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="d4d"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/d5day"
+        app:layout_constraintHorizontal_bias="0.365"
+        app:layout_constraintStart_toEndOf="@+id/d3day"
+        app:layout_constraintTop_toBottomOf="@+id/d4MinTemp"
+        app:layout_constraintVertical_bias="0.503" />
+
 
     <TextView
         android:id="@+id/d5day"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="57dp"
+        android:layout_height="34dp"
         android:layout_marginTop="4dp"
         android:layout_weight="1"
         android:gravity="center"
@@ -307,44 +269,32 @@
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.535"
         app:layout_constraintStart_toEndOf="@+id/d3day"
-        app:layout_constraintTop_toBottomOf="@+id/d5MinTemp" />
+        app:layout_constraintTop_toBottomOf="@+id/d5MinTemp"
+        app:layout_constraintVertical_bias="0.503" />
 
     <TextView
-        android:id="@+id/d5MinTemp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="116dp"
+        android:id="@+id/d6day"
+        android:layout_width="52dp"
+        android:layout_height="34dp"
+        android:layout_marginTop="4dp"
         android:layout_weight="1"
         android:gravity="center"
-        android:text="@string/d5mintemp"
+        android:text="d6d"
         android:textColor="#000000"
         android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
-        app:layout_constraintStart_toEndOf="@+id/d3MinTemp"
-        app:layout_constraintTop_toBottomOf="@+id/d5MaxTemp" />
-
-    <TextView
-        android:id="@+id/d2MinTemp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="116dp"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:text="@string/d2mintemp"
-        android:textColor="#000000"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toStartOf="@+id/d3MinTemp"
-        app:layout_constraintStart_toEndOf="@+id/d1MinTemp"
-        app:layout_constraintTop_toBottomOf="@+id/d2MaxTemp" />
+        app:layout_constraintHorizontal_bias="0.633"
+        app:layout_constraintStart_toEndOf="@+id/d5day"
+        app:layout_constraintTop_toBottomOf="@+id/d6MinTemp"
+        app:layout_constraintVertical_bias="0.503" />
 
     <TextView
         android:id="@+id/d0MinTemp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="116dp"
         android:layout_weight="1"
         android:gravity="center"
         android:text="@string/d0mintemp"
@@ -355,116 +305,190 @@
         app:layout_constraintTop_toBottomOf="@+id/d0MaxTemp" />
 
     <TextView
-        android:id="@+id/d6MinTemp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="116dp"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:text="@string/d6mintemp"
-        android:textColor="#000000"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/d5MinTemp"
-        app:layout_constraintTop_toBottomOf="@+id/d6MaxTemp" />
-
-    <TextView
         android:id="@+id/d1MinTemp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="116dp"
         android:layout_weight="1"
         android:gravity="center"
         android:text="@string/d1mintemp"
         android:textColor="#000000"
         android:textSize="24sp"
         app:layout_constraintEnd_toStartOf="@+id/d3MinTemp"
+        app:layout_constraintHorizontal_bias="0.596"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/d1MaxTemp" />
+
+    <TextView
+        android:id="@+id/d2MinTemp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="@string/d2mintemp"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toStartOf="@+id/d3MinTemp"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/d1MinTemp"
+        app:layout_constraintTop_toBottomOf="@+id/d2MaxTemp" />
+
+    <TextView
+        android:id="@+id/d3MinTemp"
+        android:layout_width="48dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="@string/d3mintemp"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/d3MaxTemp" />
 
     <TextView
         android:id="@+id/d4MinTemp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="116dp"
         android:layout_weight="1"
         android:gravity="center"
         android:text="@string/d4mintemp"
         android:textColor="#000000"
         android:textSize="24sp"
         app:layout_constraintEnd_toStartOf="@+id/d5MinTemp"
-        app:layout_constraintHorizontal_bias="0.466"
+        app:layout_constraintHorizontal_bias="0.26"
         app:layout_constraintStart_toEndOf="@+id/d3MinTemp"
         app:layout_constraintTop_toBottomOf="@+id/d4MaxTemp" />
 
     <TextView
-        android:id="@+id/d4MaxTemp"
+        android:id="@+id/d5MinTemp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:gravity="center"
-        android:text="@string/d4maxtemp"
+        android:text="@string/d5mintemp"
         android:textColor="#000000"
         android:textSize="24sp"
-        app:layout_constraintEnd_toStartOf="@+id/d5MaxTemp"
-        app:layout_constraintStart_toEndOf="@+id/d3MaxTemp"
-        app:layout_constraintTop_toTopOf="@+id/d3MaxTemp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.402"
+        app:layout_constraintStart_toEndOf="@+id/d3MinTemp"
+        app:layout_constraintTop_toBottomOf="@+id/d5MaxTemp" />
+
+    <TextView
+        android:id="@+id/d6MinTemp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="@string/d6mintemp"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.343"
+        app:layout_constraintStart_toEndOf="@+id/d5MinTemp"
+        app:layout_constraintTop_toBottomOf="@+id/d6MaxTemp" />
 
     <TextView
         android:id="@+id/d0MaxTemp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="452dp"
         android:layout_weight="1"
         android:gravity="center"
         android:text="@string/d0maxtemp"
         android:textColor="#000000"
         android:textSize="24sp"
         app:layout_constraintEnd_toStartOf="@+id/d1MaxTemp"
+        app:layout_constraintHorizontal_bias="0.555"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/d3MaxTemp" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/d1MaxTemp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="452dp"
+        android:layout_marginEnd="8dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="@string/d1maxtemp"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toStartOf="@+id/d2MaxTemp"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/d2MaxTemp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="50dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="452dp"
         android:layout_weight="1"
         android:gravity="center"
         android:text="@string/d2maxtemp"
         android:textColor="#000000"
         android:textSize="24sp"
         app:layout_constraintEnd_toStartOf="@+id/d3MaxTemp"
-        app:layout_constraintStart_toEndOf="@+id/d1MaxTemp"
-        app:layout_constraintTop_toTopOf="@+id/d3MaxTemp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/d3MaxTemp"
-        android:layout_width="48dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="172dp"
+        android:layout_width="53dp"
+        android:layout_height="27dp"
 
-        android:layout_marginTop="56dp"
-        android:layout_marginEnd="173dp"
+        android:layout_marginTop="448dp"
+        android:layout_marginEnd="6dp"
         android:layout_weight="1"
         android:gravity="center"
         android:text="@string/d3maxtemp"
         android:textColor="#000000"
         android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tableLayout3" />
+        app:layout_constraintEnd_toStartOf="@+id/d4MaxTemp"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/d1MaxTemp"
+        android:id="@+id/d4MaxTemp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="448dp"
+        android:layout_marginEnd="4dp"
         android:layout_weight="1"
         android:gravity="center"
-        android:text="@string/d1maxtemp"
+        android:text="@string/d4maxtemp"
         android:textColor="#000000"
         android:textSize="24sp"
-        app:layout_constraintEnd_toStartOf="@+id/d3MaxTemp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/d3MaxTemp" />
+        app:layout_constraintEnd_toStartOf="@+id/d5MaxTemp"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/d5MaxTemp"
+        android:layout_width="48dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="80dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="@string/d5maxtemp"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/EarthSunset" />
+
+    <TextView
+        android:id="@+id/d6MaxTemp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="94dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="@string/d6maxtemp"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.333"
+        app:layout_constraintStart_toEndOf="@+id/d5MaxTemp"
+        app:layout_constraintTop_toBottomOf="@+id/EarthUV" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

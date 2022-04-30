@@ -176,11 +176,12 @@ public class FragmentEarth extends Fragment {
             earthMinTemp = Math.round(earthMinTemp * 10) / 10.0;
             String earthMaxTempStr = Double.toString(earthMaxTemp);
             String earthMinTempStr = Double.toString(earthMinTemp);
+            Log.d("data", earthMinTempStr);
+            Log.d("data", earthMaxTempStr);
             earthMaxTempView.setText(earthMaxTempStr + "°C");
             earthMinTempView.setText(earthMinTempStr + "°C");
             eFd0MaxTempView.setText(earthMaxTempStr + "°C");
             eFd0MinTempView.setText(earthMinTempStr + "°C");
-
         } catch  (Exception e) {
             e.printStackTrace();
         }
@@ -222,7 +223,7 @@ public class FragmentEarth extends Fragment {
                     Arrays.asList(eFd0TestView, eFd1TestView)
             );
             //**setText**
-            for (int i=1; i<=6; ++i) {
+            for (int i=0; i<=6; ++i) {
                 Log.d("data", jsonDailyArr.getString(i));
                 JSONObject jsonDailyObj = jsonDailyArr.getJSONObject(i); //
                 JSONObject jsonTempObj = (JSONObject) jsonDailyObj.get("temp");
@@ -233,9 +234,10 @@ public class FragmentEarth extends Fragment {
                 earthMinTemp = Math.round(earthMinTemp * 10) / 10.0;
                 String earthMaxTempStr = Double.toString(earthMaxTemp);
                 String earthMinTempStr = Double.toString(earthMinTemp);
+                Log.d("data", earthMaxTempStr);
                 eFMaxTempArr.get(i).setText(earthMaxTempStr + "°C");
                 eFMinTempArr.get(i).setText(earthMinTempStr + "°C");
-
+                /*
                 if (i<=1) {
                     long forecastDTMillis = (jsonDailyObj.getLong("dt") + 32400L)* 1000L;
                     SimpleDateFormat timeFormat = new SimpleDateFormat("MM/dd");
@@ -243,6 +245,7 @@ public class FragmentEarth extends Fragment {
                     eFDTArr.get(i).setText(timeFormat.format(forecastDT));
                     eFTestArr.get(i).setText(timeFormat.format(forecastDT));
                 }
+                 */
 
             }
 
@@ -255,6 +258,7 @@ public class FragmentEarth extends Fragment {
             long earthSunsetMillis = (jsonCurrentObj.getLong("sunset") + 32400L) * 1000L;
             double earthUV = jsonCurrentObj.getDouble("uvi");
             String earthUVStr = Double.toString(earthUV);
+            Log.d("data", earthUVStr);
 
             SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
             Date earthSunrise = new Date(earthSunriseMillis);
@@ -268,5 +272,7 @@ public class FragmentEarth extends Fragment {
         } catch  (Exception e) {
             e.printStackTrace();
         }
+
+
     }
 }
