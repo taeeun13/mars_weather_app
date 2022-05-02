@@ -75,7 +75,7 @@ public class FragmentEarth extends Fragment {
     //String worldWeatherMapApiKey = "f7ba5036adfc078bc9d35926eb3b86ca";
     //String earthGeocodingApi = "http://api.openweathermap.org/geo/1.0/direct?q=Seoul&limit=5&appid=f7ba5036adfc078bc9d35926eb3b86ca";
     //Latitude = 37.532600, Longitude: 127.024612
-    String earthApiTodayURL = "https://api.openweathermap.org/data/2.5/weather?lat=37.5666791&lon=126.9782914&appid=f7ba5036adfc078bc9d35926eb3b86ca";
+    //String earthApiTodayURL = "https://api.openweathermap.org/data/2.5/weather?lat=37.5666791&lon=126.9782914&appid=f7ba5036adfc078bc9d35926eb3b86ca";
     String earthApiForecastURL = "https://api.openweathermap.org/data/2.5/onecall?lat=37.5666791&lon=126.9782914&exclude=hourly,minutely&appid=f7ba5036adfc078bc9d35926eb3b86ca";
 
     public static FragmentEarth newInstance(int number) {
@@ -153,50 +153,6 @@ public class FragmentEarth extends Fragment {
     //******************************Loading Earth Api***********************************
     @SuppressLint("SetTextI18n")
     private void getJSON() {
-        //******************************Today***********************************
-        try {
-            //get data
-            URL URL = new URL(earthApiTodayURL);
-            HttpURLConnection con = (HttpURLConnection)URL.openConnection();
-            con.setRequestMethod("GET");
-            BufferedReader br;
-            br = new BufferedReader(new InputStreamReader(con.getInputStream()));
-
-            String input;
-            StringBuilder response = new StringBuilder();
-            while ((input = br.readLine()) != null) {
-                response.append(input);
-            }
-            br.close();
-
-            String earthData = response.toString();
-            Log.d("data", earthData);
-            JSONObject earthJsonObj = new JSONObject(earthData);
-            JSONObject earthJsonMainObj = (JSONObject) earthJsonObj.get("main");
-            JSONObject earthJsonSysObj = (JSONObject) earthJsonObj.get("sys");
-
-            //MAX&MIN Temperature
-            double earthMaxTemp = earthJsonMainObj.getDouble("temp_max") - 273.15;
-            double earthMinTemp = earthJsonMainObj.getDouble("temp_min") - 273.15;
-
-            earthMaxTemp = Math.round(earthMaxTemp * 10) / 10.0;
-            earthMinTemp = Math.round(earthMinTemp * 10) / 10.0;
-            String earthMaxTempStr = Double.toString(earthMaxTemp);
-            String earthMinTempStr = Double.toString(earthMinTemp);
-            getActivity().runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    earthMaxTempView.setText(earthMaxTempStr + "°C");
-                    earthMinTempView.setText(earthMinTempStr + "°C");
-                    //eFd0MaxTempView.setText(earthMaxTempStr + "°C");
-                    //eFd0MinTempView.setText(earthMinTempStr + "°C");
-                }
-            });
-        } catch  (Exception e) {
-            e.printStackTrace();
-        }
-
-        //*******************************Forecast**********************************
         try {
             //**Forecast API**
             URL URL = new URL(earthApiForecastURL);
@@ -256,6 +212,9 @@ public class FragmentEarth extends Fragment {
             getActivity().runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
+                    earthMaxTempView.setText(maxTempArr.get(0) + "°C");
+                    earthMinTempView.setText(minTempArr.get(0) + "°C");
+
                     for (int i = 0; i <= 6; i++) {
                         eFMaxTempArr.get(i).setText(maxTempArr.get(i) + "°");
                         eFMinTempArr.get(i).setText(minTempArr.get(i) + "°");
