@@ -240,7 +240,7 @@ public class FragmentEarth extends Fragment {
             getActivity().runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    earthPressureView.setText(earthPressure);
+                    earthPressureView.setText(earthPressure + "hPa");
                     earthSunriseView.setText(timeFormat.format(earthSunrise));
                     earthSunsetView.setText(timeFormat.format(earthSunset));
                     earthUVView.setText(earthUVStr);
