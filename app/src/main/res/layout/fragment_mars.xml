@@ -5,59 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
-    <TextView
-        android:id="@+id/MarsUV"
-        android:layout_width="107dp"
-        android:layout_height="36dp"
-        android:layout_marginTop="68dp"
-        android:layout_marginEnd="4dp"
-        android:textAlignment="center"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/MarsMinTemp" />
-
-    <TextView
-        android:id="@+id/MarsSunset"
-        android:layout_width="87dp"
-        android:layout_height="29dp"
-        android:layout_marginTop="68dp"
-        android:layout_marginEnd="3dp"
-        android:textAlignment="viewEnd"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toStartOf="@+id/textView4"
-        app:layout_constraintTop_toBottomOf="@+id/MarsMinTemp" />
-
-    <TextView
-        android:id="@+id/MarsSunrise"
-        android:layout_width="89dp"
-        android:layout_height="31dp"
-        android:layout_marginTop="68dp"
-        android:layout_marginEnd="4dp"
-        android:textAlignment="viewEnd"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toStartOf="@+id/textView3"
-        app:layout_constraintTop_toBottomOf="@+id/MarsMaxTemp" />
-
-    <TextView
-        android:id="@+id/MarsPressure"
-        android:layout_width="102dp"
-        android:layout_height="31dp"
-        android:layout_marginTop="68dp"
-        android:textAlignment="center"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toStartOf="@+id/textView2"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/MarsMaxTemp" />
-
     <TextView
         android:id="@+id/MarsText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="24sp"
         android:text="@string/mars"
+        android:textColor="#000000"
         android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/MarsDateText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -68,382 +24,342 @@
 
     <TextView
         android:id="@+id/MarsDateText"
-        android:layout_width="197dp"
-        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
         android:textAlignment="center"
         android:textSize="20sp"
+        android:text="Latest Date"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/MarsMaxTemp"
-        android:layout_width="80dp"
+    <TableLayout
+        android:id="@+id/MtableLayout1"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="44dp"
-        android:layout_marginEnd="16dp"
-        android:textAlignment="center"
-        android:textSize="40sp"
-        app:layout_constraintEnd_toStartOf="@+id/MarsMinTemp"
-        app:layout_constraintHorizontal_bias="0.457"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/MarsDateText" />
+        android:layout_marginTop="16sp"
+        android:stretchColumns="0,1"
+        app:layout_constraintTop_toBottomOf="@+id/MarsDateText">
 
-    <TextView
-        android:id="@+id/MarsMinTemp"
-        android:layout_width="80dp"
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/MarsMaxTemp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="MaxTemp"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="40sp" />
+
+            <TextView
+                android:id="@+id/MarsMinTemp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="MinTemp"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="40sp" />
+        </TableRow>
+    </TableLayout>
+
+    <TableLayout
+        android:id="@+id/MtableLayout2"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:layout_marginEnd="104dp"
-        android:textAlignment="center"
-        android:textSize="40sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/MarsDateText" />
+        android:layout_marginTop="24sp"
+        android:stretchColumns="0,1,2,3"
+        app:layout_constraintTop_toBottomOf="@+id/MtableLayout1">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="102dp"
-        android:layout_height="31dp"
-        android:layout_marginTop="16dp"
-        android:text="Pressure"
-        android:textAlignment="viewEnd"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toStartOf="@+id/textView2"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/MarsMaxTemp" />
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="89dp"
-        android:layout_height="31dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="4dp"
-        android:text="Sunrise"
-        android:textAlignment="viewEnd"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toStartOf="@+id/textView3"
-        app:layout_constraintTop_toBottomOf="@+id/MarsMaxTemp" />
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Pressure"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:textSize="22sp" />
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="81dp"
-        android:layout_height="28dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="6dp"
-        android:text="Sunset"
-        android:textAlignment="viewEnd"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toStartOf="@+id/textView4"
-        app:layout_constraintTop_toBottomOf="@+id/MarsMinTemp" />
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Sunrise"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:textSize="22sp" />
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="107dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="8dp"
-        android:text="UV\n condition"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/MarsMinTemp" />
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Sunset"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:textSize="22sp" />
 
-    <TextView
-        android:id="@+id/md0MaxTemp"
-        android:layout_width="58dp"
-        android:layout_height="34dp"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:text="@string/d0maxtemp"
-        android:textColor="#000000"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/md0MinTemp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/md1MaxTemp" />
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="UV\n condition"
+                android:textAlignment="center"
+                android:textSize="20sp" />
+        </TableRow>
 
-    <TextView
-        android:id="@+id/md1MaxTemp"
-        android:layout_width="49dp"
-        android:layout_height="36dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginBottom="4dp"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:text="@string/d1maxtemp"
-        android:textColor="#000000"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/md1MinTemp"
-        app:layout_constraintStart_toEndOf="@+id/md2MaxTemp" />
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/md2MaxTemp"
-        android:layout_width="62dp"
-        android:layout_height="37dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginBottom="4dp"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:text="@string/d2maxtemp"
-        android:textColor="#000000"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/md2MinTemp"
-        app:layout_constraintStart_toEndOf="@+id/md3MaxTemp" />
+            <TextView
+                android:id="@+id/MarsPressure"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="24sp" />
 
-    <TextView
-        android:id="@+id/md3MaxTemp"
-        android:layout_width="53dp"
-        android:layout_height="36dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginBottom="8dp"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:text="@string/d3maxtemp"
-        android:textColor="#000000"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/md3MinTemp"
-        app:layout_constraintStart_toEndOf="@+id/md4MaxTemp" />
+            <TextView
+                android:id="@+id/MarsSunrise"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="24sp" />
 
-    <TextView
-        android:id="@+id/md4MaxTemp"
-        android:layout_width="55dp"
-        android:layout_height="35dp"
-        android:layout_marginBottom="4dp"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:text="@string/d4maxtemp"
-        android:textColor="#000000"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/md4MinTemp"
-        app:layout_constraintStart_toEndOf="@+id/md5MaxTemp" />
+            <TextView
+                android:id="@+id/MarsSunset"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="24sp" />
 
-    <TextView
-        android:id="@+id/md5MaxTemp"
-        android:layout_width="60dp"
-        android:layout_height="40dp"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:text="@string/d5maxtemp"
-        android:textColor="#000000"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/md5MinTemp"
-        app:layout_constraintStart_toEndOf="@+id/md6MaxTemp" />
+            <TextView
+                android:id="@+id/MarsUV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="24sp" />
+        </TableRow>
 
-    <TextView
-        android:id="@+id/md6MaxTemp"
-        android:layout_width="63dp"
-        android:layout_height="41dp"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:text="@string/d6maxtemp"
-        android:textColor="#000000"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/md6MinTemp"
-        app:layout_constraintEnd_toStartOf="@+id/md5MaxTemp"
-        app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-    android:id="@+id/md0MinTemp"
-    android:layout_width="54dp"
-    android:layout_height="47dp"
-    android:layout_weight="1"
-    android:gravity="center"
-    android:text="@string/d0mintemp"
-    android:textColor="#000000"
-    android:textSize="24sp"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="1.0"
-    app:layout_constraintStart_toEndOf="@+id/md1MinTemp"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintVertical_bias="0.703" />
+    </TableLayout>
+    <TableLayout
+        android:id="@+id/MtableLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32sp"
+        android:stretchColumns="0,1,2,3,4,5"
+        app:layout_constraintTop_toBottomOf="@+id/MtableLayout2">
 
-    <TextView
-        android:id="@+id/md1MinTemp"
-        android:layout_width="49dp"
-        android:layout_height="43dp"
-        android:layout_marginEnd="44dp"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:text="@string/d1mintemp"
-        android:textColor="#000000"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.222"
-        app:layout_constraintStart_toEndOf="@+id/md2MinTemp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.694" />
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/md2MinTemp"
-        android:layout_width="56dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="4dp"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:text="@string/d2mintemp"
-        android:textColor="#000000"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/md3MinTemp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.696" />
+            <TextView
+                android:id="@+id/md6MaxTemp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/d6maxtemp"
+                android:textColor="#000000"
+                android:textAlignment="center"
+                android:textSize="24sp" />
+            <TextView
+                android:id="@+id/md5MaxTemp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/d5maxtemp"
+                android:textColor="#000000"
+                android:textAlignment="center"
+                android:textSize="24sp" />
 
-    <TextView
-        android:id="@+id/md3MinTemp"
-        android:layout_width="57dp"
-        android:layout_height="44dp"
-        android:layout_marginStart="4dp"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:text="@string/d3mintemp"
-        android:textColor="#000000"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/md4MinTemp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.707" />
+            <TextView
+                android:id="@+id/md4MaxTemp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/d4maxtemp"
+                android:textColor="#000000"
+                android:textAlignment="center"
+                android:textSize="24sp" />
 
-    <TextView
-        android:id="@+id/md4MinTemp"
-        android:layout_width="55dp"
-        android:layout_height="39dp"
-        android:layout_marginStart="4dp"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:text="@string/d4mintemp"
-        android:textColor="#000000"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/md5MinTemp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.7" />
+            <TextView
+                android:id="@+id/md3MaxTemp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/d3maxtemp"
+                android:textColor="#000000"
+                android:textAlignment="center"
+                android:textSize="24sp" />
 
-    <TextView
-        android:id="@+id/md5MinTemp"
-        android:layout_width="60dp"
-        android:layout_height="41dp"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:text="@string/d5mintemp"
-        android:textColor="#000000"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/md6MinTemp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.7"
-        tools:layout_editor_absoluteX="63dp" />
+            <TextView
+                android:id="@+id/md2MaxTemp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/d2maxtemp"
+                android:textColor="#000000"
+                android:textAlignment="center"
+                android:textSize="24sp" />
 
-    <TextView
-        android:id="@+id/md6MinTemp"
-        android:layout_width="59dp"
-        android:layout_height="42dp"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:text="@string/d6mintemp"
-        android:textColor="#000000"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/md5MinTemp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.702" />
+            <TextView
+                android:id="@+id/md1MaxTemp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/d1maxtemp"
+                android:textColor="#000000"
+                android:textAlignment="center"
+                android:textSize="24sp" />
 
-    <TextView
-        android:id="@+id/md0Date"
-        android:layout_width="60dp"
-        android:layout_height="43dp"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.428"
-        app:layout_constraintStart_toEndOf="@+id/md1Date"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.77" />
+            <TextView
+                android:id="@+id/md0MaxTemp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/d0maxtemp"
+                android:textColor="#000000"
+                android:textAlignment="center"
+                android:textSize="24sp" />
 
-    <TextView
-        android:id="@+id/md1Date"
-        android:layout_width="57dp"
-        android:layout_height="45dp"
-        android:layout_marginEnd="44dp"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.4"
-        app:layout_constraintStart_toEndOf="@+id/md2Date"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.765" />
+        </TableRow>
 
-    <TextView
-        android:id="@+id/md2Date"
-        android:layout_width="56dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="4dp"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/md3Date"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.765" />
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/md3Date"
-        android:layout_width="57dp"
-        android:layout_height="44dp"
-        android:layout_marginStart="4dp"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/md4Date"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.768" />
+            <TextView
+                android:id="@+id/md6MinTemp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/d6mintemp"
+                android:textColor="#000000"
+                android:textAlignment="center"
+                android:textSize="24sp" />
 
-    <TextView
-        android:id="@+id/md4Date"
-        android:layout_width="55dp"
-        android:layout_height="39dp"
-        android:layout_marginStart="4dp"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/md5Date"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.765" />
+            <TextView
+                android:id="@+id/md5MinTemp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/d5mintemp"
+                android:textColor="#000000"
+                android:textAlignment="center"
+                android:textSize="24sp" />
 
-    <TextView
-        android:id="@+id/md5Date"
-        android:layout_width="60dp"
-        android:layout_height="41dp"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/md6Date"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.765" />
+            <TextView
+                android:id="@+id/md4MinTemp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/d4mintemp"
+                android:textColor="#000000"
+                android:textAlignment="center"
+                android:textSize="24sp" />
 
-    <TextView
-        android:id="@+id/md6Date"
-        android:layout_width="54dp"
-        android:layout_height="40dp"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/md5Date"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.766" />
+            <TextView
+                android:id="@+id/md3MinTemp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/d3mintemp"
+                android:textColor="#000000"
+                android:textAlignment="center"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/md2MinTemp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/d2mintemp"
+                android:textColor="#000000"
+                android:textAlignment="center"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/md1MinTemp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/d1mintemp"
+                android:textColor="#000000"
+                android:textAlignment="center"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/md0MinTemp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/d0mintemp"
+                android:textColor="#000000"
+                android:textAlignment="center"
+                android:textSize="24sp" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/md6Date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/md5Date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/md4Date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/md3Date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/md2Date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/md1Date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/md0Date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textSize="20sp" />
+
+        </TableRow>
+    </TableLayout>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

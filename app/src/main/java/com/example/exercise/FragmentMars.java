@@ -153,9 +153,9 @@ public class FragmentMars extends Fragment {
                 @Override
                 public void run() {
                     marsDateTextView.setText(date);
-                    marsMaxTempView.setText(marsMaxTempStr + "°");
-                    marsMinTempView.setText(marsMinTempStr + "°");
-                    marsPressureView.setText(marsPressure);
+                    marsMaxTempView.setText(marsMaxTempStr + "°C");
+                    marsMinTempView.setText(marsMinTempStr + "°C");
+                    marsPressureView.setText(marsPressure + "Pa");
                     marsSunriseView.setText(marsSunrise);
                     marsSunsetView.setText(marsSunset);
                     marsUVView.setText(marsUV);
