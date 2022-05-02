@@ -60,12 +60,15 @@ public class FragmentEarth extends Fragment {
     TextView eFd4MinTempView;
     TextView eFd5MinTempView;
     TextView eFd6MinTempView;
+
     // **Date**
     TextView eFd0DTView;
     TextView eFd1DTView;
-    // **Test**
-    TextView eFd0TestView;
-    TextView eFd1TestView;
+    TextView eFd2DTView;
+    TextView eFd3DTView;
+    TextView eFd4DTView;
+    TextView eFd5DTView;
+    TextView eFd6DTView;
 
 
     //******************************Declare APIs***********************************
@@ -125,9 +128,11 @@ public class FragmentEarth extends Fragment {
         // **Forecast Date
         eFd0DTView = v2.findViewById(R.id.d0day);
         eFd1DTView = v2.findViewById(R.id.d1day);
-        // **Forecast Date
-
-
+        eFd2DTView = v2.findViewById(R.id.d2day);
+        eFd3DTView = v2.findViewById(R.id.d3day);
+        eFd4DTView = v2.findViewById(R.id.d4day);
+        eFd5DTView = v2.findViewById(R.id.d5day);
+        eFd6DTView = v2.findViewById(R.id.d6day);
 
         getDate();
 
@@ -136,12 +141,14 @@ public class FragmentEarth extends Fragment {
         return v2;
     }
 
+
     private void getDate() {
         long now = System.currentTimeMillis();
         Date date = new Date(now);
         @SuppressLint("SimpleDateFormat") SimpleDateFormat dFormat = new SimpleDateFormat("yyyy-MM-dd");
         earthDateTextView.setText(dFormat.format(date));
     }
+
 
     //******************************Loading Earth Api***********************************
     @SuppressLint("SetTextI18n")
@@ -176,12 +183,15 @@ public class FragmentEarth extends Fragment {
             earthMinTemp = Math.round(earthMinTemp * 10) / 10.0;
             String earthMaxTempStr = Double.toString(earthMaxTemp);
             String earthMinTempStr = Double.toString(earthMinTemp);
-            Log.d("data", earthMinTempStr);
-            Log.d("data", earthMaxTempStr);
-            earthMaxTempView.setText(earthMaxTempStr + "°C");
-            earthMinTempView.setText(earthMinTempStr + "°C");
-            eFd0MaxTempView.setText(earthMaxTempStr + "°C");
-            eFd0MinTempView.setText(earthMinTempStr + "°C");
+            getActivity().runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    earthMaxTempView.setText(earthMaxTempStr + "°C");
+                    earthMinTempView.setText(earthMinTempStr + "°C");
+                    //eFd0MaxTempView.setText(earthMaxTempStr + "°C");
+                    //eFd0MinTempView.setText(earthMinTempStr + "°C");
+                }
+            });
         } catch  (Exception e) {
             e.printStackTrace();
         }
@@ -217,38 +227,42 @@ public class FragmentEarth extends Fragment {
                     Arrays.asList(eFd0MinTempView, eFd1MinTempView, eFd2MinTempView, eFd3MinTempView, eFd4MinTempView, eFd5MinTempView, eFd6MinTempView)
             );
             ArrayList<TextView> eFDTArr = new ArrayList<>(
-                    Arrays.asList(eFd0DTView, eFd1DTView)
+                    Arrays.asList(eFd0DTView, eFd1DTView, eFd2DTView, eFd3DTView, eFd4DTView, eFd5DTView, eFd6DTView)
             );
-            ArrayList<TextView> eFTestArr = new ArrayList<>(
-                    Arrays.asList(eFd0TestView, eFd1TestView)
-            );
+            ArrayList<String> maxTempArr = new ArrayList<>();
+            ArrayList<String> minTempArr = new ArrayList<>();
+            ArrayList<String> fDateArr = new ArrayList<>();
+
             //**setText**
             for (int i=0; i<=6; ++i) {
-                Log.d("data", jsonDailyArr.getString(i));
+                //Log.d("data", jsonDailyArr.getString(i));
                 JSONObject jsonDailyObj = jsonDailyArr.getJSONObject(i); //
                 JSONObject jsonTempObj = (JSONObject) jsonDailyObj.get("temp");
                 double earthMaxTemp = jsonTempObj.getDouble("max") - 273.15;
                 double earthMinTemp = jsonTempObj.getDouble("min") - 273.15;
-
                 earthMaxTemp = Math.round(earthMaxTemp * 10) / 10.0;
                 earthMinTemp = Math.round(earthMinTemp * 10) / 10.0;
                 String earthMaxTempStr = Double.toString(earthMaxTemp);
                 String earthMinTempStr = Double.toString(earthMinTemp);
-                Log.d("data", earthMaxTempStr);
-                eFMaxTempArr.get(i).setText(earthMaxTempStr + "°C");
-                eFMinTempArr.get(i).setText(earthMinTempStr + "°C");
-                /*
-                if (i<=1) {
-                    long forecastDTMillis = (jsonDailyObj.getLong("dt") + 32400L)* 1000L;
-                    SimpleDateFormat timeFormat = new SimpleDateFormat("MM/dd");
-                    Date forecastDT = new Date(forecastDTMillis);
-                    eFDTArr.get(i).setText(timeFormat.format(forecastDT));
-                    eFTestArr.get(i).setText(timeFormat.format(forecastDT));
-                }
-                 */
 
+                long forecastDTMillis = (jsonDailyObj.getLong("dt") + 32400L)* 1000L;
+                SimpleDateFormat timeFormat = new SimpleDateFormat("MM-dd");
+                Date forecastDT = new Date(forecastDTMillis);
+
+                maxTempArr.add(earthMaxTempStr);
+                minTempArr.add(earthMinTempStr);
+                fDateArr.add(timeFormat.format(forecastDT));
             }
-
+            getActivity().runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    for (int i = 0; i <= 6; i++) {
+                        eFMaxTempArr.get(i).setText(maxTempArr.get(i) + "°");
+                        eFMinTempArr.get(i).setText(minTempArr.get(i) + "°");
+                        eFDTArr.get(i).setText(fDateArr.get(i));
+                    }
+                }
+            });
             //******Pressure, Sunrise, Sunset and UV Condition******
             //+32400L: UTC -> KST, 32400sec = 9hour
             //*1000: msec -> sec
@@ -264,10 +278,15 @@ public class FragmentEarth extends Fragment {
             Date earthSunrise = new Date(earthSunriseMillis);
             Date earthSunset = new Date(earthSunsetMillis);
 
-            earthPressureView.setText(earthPressure);
-            earthSunriseView.setText(timeFormat.format(earthSunrise));
-            earthSunsetView.setText(timeFormat.format(earthSunset));
-            earthUVView.setText(earthUVStr);
+            getActivity().runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    earthPressureView.setText(earthPressure);
+                    earthSunriseView.setText(timeFormat.format(earthSunrise));
+                    earthSunsetView.setText(timeFormat.format(earthSunset));
+                    earthUVView.setText(earthUVStr);
+                }
+            });
 
         } catch  (Exception e) {
             e.printStackTrace();

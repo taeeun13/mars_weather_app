@@ -148,13 +148,19 @@ public class FragmentMars extends Fragment {
             Log.d("data", date);
 
             //setText
-            marsDateTextView.setText(date);
-            marsMaxTempView.setText(marsMaxTempStr + "°");
-            marsMinTempView.setText(marsMinTempStr + "°");
-            marsPressureView.setText(marsPressure);
-            marsSunriseView.setText(marsSunrise);
-            marsSunsetView.setText(marsSunset);
-            marsUVView.setText(marsUV);
+
+            getActivity().runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    marsDateTextView.setText(date);
+                    marsMaxTempView.setText(marsMaxTempStr + "°");
+                    marsMinTempView.setText(marsMinTempStr + "°");
+                    marsPressureView.setText(marsPressure);
+                    marsSunriseView.setText(marsSunrise);
+                    marsSunsetView.setText(marsSunset);
+                    marsUVView.setText(marsUV);
+                }
+            });
 
             ArrayList<TextView> mFMaxTempArr = new ArrayList<>(
                     Arrays.asList(mFd0MaxTempView, mFd1MaxTempView, mFd2MaxTempView, mFd3MaxTempView, mFd4MaxTempView, mFd5MaxTempView, mFd6MaxTempView)
@@ -166,17 +172,31 @@ public class FragmentMars extends Fragment {
             ArrayList<TextView> mFDateArr = new ArrayList<>(
                     Arrays.asList(mFd0DateView, mFd1DateView, mFd2DateView, mFd3DateView, mFd4DateView, mFd5DateView, mFd6DateView)
             );
-
-
+            ArrayList<String> maxTempArr = new ArrayList<>();
+            ArrayList<String> minTempArr = new ArrayList<>();
+            ArrayList<String> fDateArr = new ArrayList<>();
             for (int i = 0; i <= 6; i++) {
                 JSONObject obj = jsonArr.getJSONObject(i);
                 String maxTemp = obj.getString("max_temp");
                 String minTemp = obj.getString("min_temp");
-                String fdate = obj.getString("terrestrial_date").substring(5);
-                mFMaxTempArr.get(i).setText(maxTemp + "°");
-                mFMinTempArr.get(i).setText(minTemp + "°");
-                mFDateArr.get(i).setText(fdate);
+                String fDate = obj.getString("terrestrial_date").substring(5);
+                maxTempArr.add(maxTemp);
+                minTempArr.add(minTemp);
+                fDateArr.add(fDate);
             }
+
+            getActivity().runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    for (int i = 0; i <= 6; i++) {
+                        mFMaxTempArr.get(i).setText(maxTempArr.get(i) + "°");
+                        mFMinTempArr.get(i).setText(minTempArr.get(i) + "°");
+                        mFDateArr.get(i).setText(fDateArr.get(i));
+                    }
+                }
+            });
+
+
 
         } catch  (Exception e) {
             e.printStackTrace();
