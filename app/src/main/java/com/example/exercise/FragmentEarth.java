@@ -11,7 +11,12 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-//import org.json.JSONArray;
+import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.components.YAxis;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -23,6 +28,11 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
+
+//import org.json.JSONArray;
+
+
 public class FragmentEarth extends Fragment {
 
     //******************************Declare TextViews***********************************
@@ -69,6 +79,9 @@ public class FragmentEarth extends Fragment {
     TextView eFd4DTView;
     TextView eFd5DTView;
     TextView eFd6DTView;
+
+    //**BarChart**
+    BarChart eFBarChart;
 
 
     //******************************Declare APIs***********************************
@@ -125,7 +138,7 @@ public class FragmentEarth extends Fragment {
         eFd4MinTempView = v2.findViewById(R.id.d4MinTemp);
         eFd5MinTempView = v2.findViewById(R.id.d5MinTemp);
         eFd6MinTempView = v2.findViewById(R.id.d6MinTemp);
-        // **Forecast Date
+        // **Forecast Date**
         eFd0DTView = v2.findViewById(R.id.d0day);
         eFd1DTView = v2.findViewById(R.id.d1day);
         eFd2DTView = v2.findViewById(R.id.d2day);
@@ -134,9 +147,13 @@ public class FragmentEarth extends Fragment {
         eFd5DTView = v2.findViewById(R.id.d5day);
         eFd6DTView = v2.findViewById(R.id.d6day);
 
+        //**Bar Chart**
+        eFBarChart = v2.findViewById(R.id.eBarChart);
+
         getDate();
 
         new Thread(this::getJSON).start();
+
 
         return v2;
     }
@@ -152,7 +169,7 @@ public class FragmentEarth extends Fragment {
 
     //******************************Loading Earth Api***********************************
     @SuppressLint("SetTextI18n")
-    private void getJSON() {
+    public void getJSON() {
         try {
             //**Forecast API**
             URL URL = new URL(earthApiForecastURL);
@@ -185,12 +202,13 @@ public class FragmentEarth extends Fragment {
             ArrayList<TextView> eFDTArr = new ArrayList<>(
                     Arrays.asList(eFd0DTView, eFd1DTView, eFd2DTView, eFd3DTView, eFd4DTView, eFd5DTView, eFd6DTView)
             );
+
             ArrayList<String> maxTempArr = new ArrayList<>();
             ArrayList<String> minTempArr = new ArrayList<>();
             ArrayList<String> fDateArr = new ArrayList<>();
 
             //**setText**
-            for (int i=0; i<=6; ++i) {
+            for (int i = 0; i<=6; ++i) {
                 //Log.d("data", jsonDailyArr.getString(i));
                 JSONObject jsonDailyObj = jsonDailyArr.getJSONObject(i); //
                 JSONObject jsonTempObj = (JSONObject) jsonDailyObj.get("temp");
@@ -209,6 +227,60 @@ public class FragmentEarth extends Fragment {
                 minTempArr.add(earthMinTempStr);
                 fDateArr.add(timeFormat.format(forecastDT));
             }
+
+            new Thread(() -> {
+                float max0 = Float.parseFloat(maxTempArr.get(0));
+                float max1 =  Float.parseFloat(maxTempArr.get(1));
+                float max2 =  Float.parseFloat(maxTempArr.get(2));
+                float max3 = Float.parseFloat(maxTempArr.get(3));
+                float max4 = Float.parseFloat(maxTempArr.get(4));
+                float max5 = Float.parseFloat(maxTempArr.get(5));
+                float max6 = Float.parseFloat(maxTempArr.get(6));
+
+                float min0 = Float.parseFloat(minTempArr.get(0));
+                float min1 = Float.parseFloat(minTempArr.get(1));
+                float min2 = Float.parseFloat(minTempArr.get(2));
+                float min3 = Float.parseFloat(minTempArr.get(3));
+                float min4 = Float.parseFloat(minTempArr.get(4));
+                float min5 = Float.parseFloat(minTempArr.get(5));
+                float min6 = Float.parseFloat(minTempArr.get(6));
+
+                List<BarEntry> entries = new ArrayList<>();
+
+                entries.add(new BarEntry(0f, max0));
+                entries.add(new BarEntry(1f, max1));
+                entries.add(new BarEntry(2f, max2));
+                entries.add(new BarEntry(3f, max3));
+                entries.add(new BarEntry(4f, max4));
+                entries.add(new BarEntry(5f, max5));
+                entries.add(new BarEntry(6f, max6));
+                entries.add(new BarEntry(0f, -min0));
+                entries.add(new BarEntry(1f, -min1));
+                entries.add(new BarEntry(2f, -min2));
+                entries.add(new BarEntry(3f, -min3));
+                entries.add(new BarEntry(4f, -min4));
+                entries.add(new BarEntry(5f, -min5));
+                entries.add(new BarEntry(6f, -min6));
+
+
+                BarDataSet bSet = new BarDataSet(entries, " ");
+                BarData bData = new BarData(bSet);
+                eFBarChart.setData(bData);
+
+                bData.setBarWidth(0.2f);
+                eFBarChart.getDescription().setEnabled(false);
+
+                YAxis left = eFBarChart.getAxisLeft();
+                left.setDrawLabels(false); // no axis labels
+                left.setDrawAxisLine(false); // no axis line
+                left.setDrawGridLines(false); // no grid lines
+                YAxis right = eFBarChart.getAxisRight();
+                right.setEnabled(false);
+                right.setDrawLabels(false); // no axis labels
+                right.setDrawAxisLine(false); // no axis line
+                right.setDrawGridLines(false); // no grid lines
+            }).start();
+
             getActivity().runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
@@ -247,10 +319,14 @@ public class FragmentEarth extends Fragment {
                 }
             });
 
+
         } catch  (Exception e) {
             e.printStackTrace();
         }
 
 
     }
+
+
 }
+
