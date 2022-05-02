@@ -1,5 +1,6 @@
 package com.example.exercise;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -107,13 +108,12 @@ public class FragmentMars extends Fragment {
         mFd5DateView = v.findViewById(R.id.md5Date);
         mFd6DateView = v.findViewById(R.id.md6Date);
 
-        new Thread(() -> {
-            getJSON();
-        }).start();
+        new Thread(this::getJSON).start();
 
         return v;
     }
 
+    @SuppressLint("SetTextI18n")
     public void getJSON(){
         try {
 

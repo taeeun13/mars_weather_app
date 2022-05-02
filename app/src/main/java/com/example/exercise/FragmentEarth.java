@@ -1,5 +1,6 @@
 package com.example.exercise;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -130,9 +131,7 @@ public class FragmentEarth extends Fragment {
 
         getDate();
 
-        new Thread(() -> {
-            getJSON();
-        }).start();
+        new Thread(this::getJSON).start();
 
         return v2;
     }
@@ -140,11 +139,12 @@ public class FragmentEarth extends Fragment {
     private void getDate() {
         long now = System.currentTimeMillis();
         Date date = new Date(now);
-        SimpleDateFormat dFormat = new SimpleDateFormat("yyyy-MM-dd");
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat dFormat = new SimpleDateFormat("yyyy-MM-dd");
         earthDateTextView.setText(dFormat.format(date));
     }
 
     //******************************Loading Earth Api***********************************
+    @SuppressLint("SetTextI18n")
     private void getJSON() {
         //******************************Today***********************************
         try {
