@@ -360,6 +360,16 @@
         </TableRow>
     </TableLayout>
 
+    <Button
+        android:id="@+id/infoBtn"
+        android:layout_width="27dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="#D3D1D1"
+        android:text="@string/button_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

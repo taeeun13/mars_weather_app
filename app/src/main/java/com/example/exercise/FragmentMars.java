@@ -1,12 +1,17 @@
 package com.example.exercise;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -110,6 +115,16 @@ public class FragmentMars extends Fragment {
 
         new Thread(this::getJSON).start();
 
+        Button button = (Button) v.findViewById(R.id.infoBtn);
+        button.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                show();
+            }
+        });
+
         return v;
     }
 
@@ -201,5 +216,19 @@ public class FragmentMars extends Fragment {
         } catch  (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public void show() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setTitle("Title"); //타이틀설정
+        builder.setMessage("Message"); //내용설정
+        builder.setNeutralButton("close", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int which) {
+            }
+        });
+        builder.setCancelable(false);
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 }
