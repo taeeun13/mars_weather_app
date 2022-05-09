@@ -4,16 +4,21 @@ import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 
+
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+
+import com.bumptech.glide.Glide;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -122,6 +127,7 @@ public class FragmentMars extends Fragment {
         mFd5DateView = v.findViewById(R.id.md5Date);
         mFd6DateView = v.findViewById(R.id.md6Date);
 
+
         new Thread(this::getJSON).start();
 
         Button button = (Button) v.findViewById(R.id.infoBtn);
@@ -136,35 +142,30 @@ public class FragmentMars extends Fragment {
         return v;
     }
 
-
-/*
-    public String getCuriosityLoc() {
-        Document doc;
-        try {
-            doc = Jsoup.connect("https://mars.nasa.gov/maps/location/?mission=Curiosity").get();
-            Elements contents = doc.select(".mouseLngLat");
-            String text = contents.text();
-            Log.d("data", text);
-            return text;
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-*/
-    public void show(String text) {
-        Log.d("link", text);
+    public void show(String curiosityLocLink) throws IOException {
+        Log.d("link", curiosityLocLink);
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setTitle("Information"); //타이틀설정
-        builder.setMessage("\nInstrument: \nMars Curiosity Rover\nCurrent Location: \n(Longitude, Latitude) \n=" + text); //내용설정
+        ImageView image = new ImageView(getActivity());
+        Glide.with(getActivity()).load(curiosityLocLink).override(900, 900).into(image);
+
+        builder.setView(image);
+
+        builder.setTitle("Information");
+        builder.setMessage("\nInstrument: Mars Curiosity Rover\n\nCurrent Location:\n");
         builder.setNeutralButton("close", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int which) {
+                dialogInterface.dismiss();
             }
         });
-        builder.setCancelable(false);
-        AlertDialog dialog = builder.create();
-        dialog.show();
+        AlertDialog alertDialog = builder.create();
+        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+        lp.copyFrom(alertDialog.getWindow().getAttributes());
+        lp.width = WindowManager.LayoutParams.MATCH_PARENT;
+        lp.height = WindowManager.LayoutParams.MATCH_PARENT;
+        alertDialog.show();
+        alertDialog.getWindow().setAttributes(lp);
+        alertDialog.show();
     }
 
 
@@ -179,7 +180,7 @@ public class FragmentMars extends Fragment {
                 Elements el = doc.getElementsByAttribute("rel");
                 Elements link = el.select("link[rel=image_src]");
                 text = link.attr("href");
-                Log.d("link", text);
+                //Log.d("link", text);
                 return text;
             }
         };
@@ -192,7 +193,11 @@ public class FragmentMars extends Fragment {
 
         @Override
         public void onClick(View v) {
-            show(loc);
+            try {
+                show(loc);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
