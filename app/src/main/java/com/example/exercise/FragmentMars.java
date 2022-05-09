@@ -3,7 +3,7 @@ package com.example.exercise;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
+
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,20 +11,29 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.select.Elements;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
 
 
 public class FragmentMars extends Fragment {
@@ -116,25 +125,84 @@ public class FragmentMars extends Fragment {
         new Thread(this::getJSON).start();
 
         Button button = (Button) v.findViewById(R.id.infoBtn);
-        button.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                show();
-            }
-        });
+        try {
+            button.setOnClickListener(new MyOnClickListener());
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         return v;
     }
 
+
+/*
+    public String getCuriosityLoc() {
+        Document doc;
+        try {
+            doc = Jsoup.connect("https://mars.nasa.gov/maps/location/?mission=Curiosity").get();
+            Elements contents = doc.select(".mouseLngLat");
+            String text = contents.text();
+            Log.d("data", text);
+            return text;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+*/
+    public void show(String text) {
+        Log.d("link", text);
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setTitle("Information"); //타이틀설정
+        builder.setMessage("\nInstrument: \nMars Curiosity Rover\nCurrent Location: \n(Longitude, Latitude) \n=" + text); //내용설정
+        builder.setNeutralButton("close", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int which) {
+            }
+        });
+        builder.setCancelable(false);
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
+
+    public class MyOnClickListener implements View.OnClickListener {
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+        Callable<String> getCuriosityLoc = new Callable<String>() {
+            @Override
+            public String call() throws IOException {
+                String text = null;
+                Document doc;
+                doc = Jsoup.connect("https://mars.nasa.gov/msl/mission/where-is-the-rover/").get();
+                Elements el = doc.getElementsByAttribute("rel");
+                Elements link = el.select("link[rel=image_src]");
+                text = link.attr("href");
+                Log.d("link", text);
+                return text;
+            }
+        };
+
+        Future<String> future = executor.submit(getCuriosityLoc);
+        String loc = future.get(); // use future
+
+        public MyOnClickListener() throws ExecutionException, InterruptedException {
+        }
+
+        @Override
+        public void onClick(View v) {
+            show(loc);
+        }
+    }
+
     @SuppressLint("SetTextI18n")
-    public void getJSON(){
+    public void getJSON() {
         try {
 
             //Loading API
             URL url = new URL(marsApiURL);
-            HttpURLConnection con = (HttpURLConnection)url.openConnection();
+            HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setRequestMethod("GET");
             BufferedReader br;
             br = new BufferedReader(new InputStreamReader(con.getInputStream()));
@@ -151,7 +219,7 @@ public class FragmentMars extends Fragment {
             Log.d("data", data);
             JSONObject jsonObj = new JSONObject(data);
             JSONArray jsonArr = (JSONArray) jsonObj.get("soles");
-            Log.d("data",jsonArr.getString(0));
+            Log.d("data", jsonArr.getString(0));
             JSONObject object = jsonArr.getJSONObject(0);
             String date = object.getString("terrestrial_date");
             String marsMaxTempStr = object.getString("max_temp");
@@ -212,23 +280,8 @@ public class FragmentMars extends Fragment {
             });
 
 
-
-        } catch  (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    public void show() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setTitle("Information"); //타이틀설정
-        builder.setMessage("Instrument: \nMars Curiosity Rover\nCurrent Location: \n(Longitude, Latitude) \n= (137.44, -4.5895)"); //내용설정
-        builder.setNeutralButton("close", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int which) {
-            }
-        });
-        builder.setCancelable(false);
-        AlertDialog dialog = builder.create();
-        dialog.show();
     }
 }
