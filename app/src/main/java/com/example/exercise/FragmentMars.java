@@ -220,8 +220,8 @@ public class FragmentMars extends Fragment {
 
     public void show() {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setTitle("Title"); //타이틀설정
-        builder.setMessage("Message"); //내용설정
+        builder.setTitle("Information"); //타이틀설정
+        builder.setMessage("Instrument: \nMars Curiosity Rover\nCurrent Location: \n(Longitude, Latitude) \n= (137.44, -4.5895)"); //내용설정
         builder.setNeutralButton("close", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int which) {
