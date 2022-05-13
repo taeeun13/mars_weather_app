@@ -21,6 +21,7 @@ import androidx.fragment.app.Fragment;
 import com.bumptech.glide.Glide;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -173,13 +174,30 @@ public class FragmentMars extends Fragment {
         ExecutorService executor = Executors.newSingleThreadExecutor();
         Callable<String> getCuriosityLoc = new Callable<String>() {
             @Override
-            public String call() throws IOException {
+            public String call() throws IOException, JSONException {
                 String text = null;
-                Document doc;
-                doc = Jsoup.connect("https://mars.nasa.gov/msl/mission/where-is-the-rover/").get();
-                Elements el = doc.getElementsByAttribute("rel");
-                Elements link = el.select("link[rel=image_src]");
-                text = link.attr("href");
+
+                URL url = new URL("https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=3415&camera=mast&page=1&api_key=KBKBygrnyM3Q4Rk5Rxg4hroSx0V2XLdJDupa8MkJ");
+                HttpURLConnection con = (HttpURLConnection) url.openConnection();
+                con.setRequestMethod("GET");
+                BufferedReader br;
+                br = new BufferedReader(new InputStreamReader(con.getInputStream()));
+
+                String input;
+                StringBuilder response = new StringBuilder();
+                while ((input = br.readLine()) != null) {
+                    response.append(input);
+                }
+                br.close();
+
+                //Get Data
+                String data = response.toString();
+                Log.d("data", data);
+                JSONObject jsonObj = new JSONObject(data);
+                JSONArray jsonArr = (JSONArray) jsonObj.get("photos");
+                JSONObject object = jsonArr.getJSONObject(0);
+                text = object.getString("img_src");
+
                 //Log.d("link", text);
                 return text;
             }
