@@ -6,6 +6,8 @@ import android.content.DialogInterface;
 
 
 import android.os.Bundle;
+import android.text.Html;
+import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -167,6 +169,7 @@ public class FragmentMars extends Fragment {
         alertDialog.show();
         alertDialog.getWindow().setAttributes(lp);
         alertDialog.show();
+        ((TextView)alertDialog.findViewById(android.R.id.message)).setMovementMethod(LinkMovementMethod.getInstance());
     }
 
 
