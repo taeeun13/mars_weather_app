@@ -1,6 +1,7 @@
 package com.example.exercise;
 
 import android.annotation.SuppressLint;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -9,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import com.github.mikephil.charting.charts.BarChart;
@@ -16,6 +18,7 @@ import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.model.GradientColor;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -229,46 +232,57 @@ public class FragmentEarth extends Fragment {
             }
 
             new Thread(() -> {
-                float max0 = Float.parseFloat(maxTempArr.get(0));
-                float max1 =  Float.parseFloat(maxTempArr.get(1));
-                float max2 =  Float.parseFloat(maxTempArr.get(2));
-                float max3 = Float.parseFloat(maxTempArr.get(3));
-                float max4 = Float.parseFloat(maxTempArr.get(4));
-                float max5 = Float.parseFloat(maxTempArr.get(5));
-                float max6 = Float.parseFloat(maxTempArr.get(6));
-
-                float min0 = Float.parseFloat(minTempArr.get(0));
-                float min1 = Float.parseFloat(minTempArr.get(1));
-                float min2 = Float.parseFloat(minTempArr.get(2));
-                float min3 = Float.parseFloat(minTempArr.get(3));
-                float min4 = Float.parseFloat(minTempArr.get(4));
-                float min5 = Float.parseFloat(minTempArr.get(5));
-                float min6 = Float.parseFloat(minTempArr.get(6));
+                ArrayList<Float> minTempFloatArr = new ArrayList<>();
+                ArrayList<Float> maxTempFloatArr = new ArrayList<>();
+                float minTempTot = 3000.F;
+                for (int i=0; i<=6; i++){
+                    float minTempDay = Float.parseFloat(minTempArr.get(i));
+                    if (minTempDay < minTempTot) minTempTot = minTempDay;
+                    minTempFloatArr.add(minTempDay);
+                    maxTempFloatArr.add(Float.parseFloat(maxTempArr.get(i)));
+                }
 
                 List<BarEntry> entries = new ArrayList<>();
 
-                entries.add(new BarEntry(0f, max0));
-                entries.add(new BarEntry(1f, max1));
-                entries.add(new BarEntry(2f, max2));
-                entries.add(new BarEntry(3f, max3));
-                entries.add(new BarEntry(4f, max4));
-                entries.add(new BarEntry(5f, max5));
-                entries.add(new BarEntry(6f, max6));
-                entries.add(new BarEntry(0f, -min0));
-                entries.add(new BarEntry(1f, -min1));
-                entries.add(new BarEntry(2f, -min2));
-                entries.add(new BarEntry(3f, -min3));
-                entries.add(new BarEntry(4f, -min4));
-                entries.add(new BarEntry(5f, -min5));
-                entries.add(new BarEntry(6f, -min6));
+                entries.add(new BarEntry(0f, new float[] {maxTempFloatArr.get(0), -(2*minTempTot-minTempFloatArr.get(0))}));
+                entries.add(new BarEntry(1f, new float[] {maxTempFloatArr.get(1), -(2*minTempTot-minTempFloatArr.get(1))}));
+                entries.add(new BarEntry(2f, new float[] {maxTempFloatArr.get(2), -(2*minTempTot-minTempFloatArr.get(2))}));
+                entries.add(new BarEntry(3f, new float[] {maxTempFloatArr.get(3), -(2*minTempTot-minTempFloatArr.get(3))}));
+                entries.add(new BarEntry(4f, new float[] {maxTempFloatArr.get(4), -(2*minTempTot-minTempFloatArr.get(4))}));
+                entries.add(new BarEntry(5f, new float[] {maxTempFloatArr.get(5), -(2*minTempTot-minTempFloatArr.get(5))}));
+                entries.add(new BarEntry(6f, new float[] {maxTempFloatArr.get(6), -(2*minTempTot-minTempFloatArr.get(6))}));
+
+                /*
+                entries.add(new BarEntry(0f, maxTempFloatArr.get(0)));
+                entries.add(new BarEntry(1f, maxTempFloatArr.get(1)));
+                entries.add(new BarEntry(2f, maxTempFloatArr.get(2)));
+                entries.add(new BarEntry(3f, maxTempFloatArr.get(3)));
+                entries.add(new BarEntry(4f, maxTempFloatArr.get(4)));
+                entries.add(new BarEntry(5f, maxTempFloatArr.get(5)));
+                entries.add(new BarEntry(6f, maxTempFloatArr.get(6)));
+                entries.add(new BarEntry(0f, -(2*minTempTot-minTempFloatArr.get(0))));
+                entries.add(new BarEntry(1f, -(2*minTempTot-minTempFloatArr.get(1))));
+                entries.add(new BarEntry(2f, -(2*minTempTot-minTempFloatArr.get(2))));
+                entries.add(new BarEntry(3f, -(2*minTempTot-minTempFloatArr.get(3))));
+                entries.add(new BarEntry(4f, -(2*minTempTot-minTempFloatArr.get(4))));
+                entries.add(new BarEntry(5f, -(2*minTempTot-minTempFloatArr.get(5))));
+                entries.add(new BarEntry(6f, -(2*minTempTot-minTempFloatArr.get(6))));
+                */
 
 
                 BarDataSet bSet = new BarDataSet(entries, " ");
+                bSet.setDrawValues(false);
                 BarData bData = new BarData(bSet);
-                eFBarChart.setData(bData);
+                List<GradientColor> gradientColors = new ArrayList<>();
+                gradientColors.add(new GradientColor(Color.parseColor("#00FF5722"), Color.parseColor("#FFFF5722")));
+                gradientColors.add(new GradientColor(Color.parseColor("#FFFF5722"), Color.parseColor("#00FF5722")));
+                //bSet.setGradientColor(Color.parseColor("#00FF5722"),Color.parseColor("#FFFF5722"));
+                bSet.setGradientColors(gradientColors);
+                bData.setBarWidth(0.4f);
 
-                bData.setBarWidth(0.2f);
-                eFBarChart.getDescription().setEnabled(false);
+                eFBarChart.setData(bData);
+                eFBarChart.setDescription(null);
+                eFBarChart.getXAxis().setEnabled(false);
 
                 YAxis left = eFBarChart.getAxisLeft();
                 left.setDrawLabels(false); // no axis labels
