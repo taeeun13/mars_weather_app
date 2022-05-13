@@ -154,7 +154,7 @@ public class FragmentMars extends Fragment {
         builder.setView(image);
 
         builder.setTitle("Information");
-        builder.setMessage("\nInstrument: Mars Curiosity Rover\n\nCurrent Location:\n");
+        builder.setMessage(Html.fromHtml("<p>\nInstrument: Mars Curiosity Rover\n\nCurrent Location:\n,<a href=\"https://mars.nasa.gov/maps/location/?mission=Curiosity\">Click here</a></p><p>\nLatest photo from curiosity rover:</p>"));
         builder.setNeutralButton("close", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int which) {
@@ -180,7 +180,7 @@ public class FragmentMars extends Fragment {
             public String call() throws IOException, JSONException {
                 String text = null;
 
-                URL url = new URL("https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=3415&camera=mast&page=1&api_key=KBKBygrnyM3Q4Rk5Rxg4hroSx0V2XLdJDupa8MkJ");
+                URL url = new URL("https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/latest_photos?api_key=KBKBygrnyM3Q4Rk5Rxg4hroSx0V2XLdJDupa8MkJ");
                 HttpURLConnection con = (HttpURLConnection) url.openConnection();
                 con.setRequestMethod("GET");
                 BufferedReader br;
@@ -197,7 +197,7 @@ public class FragmentMars extends Fragment {
                 String data = response.toString();
                 Log.d("data", data);
                 JSONObject jsonObj = new JSONObject(data);
-                JSONArray jsonArr = (JSONArray) jsonObj.get("photos");
+                JSONArray jsonArr = (JSONArray) jsonObj.get("latest_photos");
                 JSONObject object = jsonArr.getJSONObject(0);
                 text = object.getString("img_src");
 
