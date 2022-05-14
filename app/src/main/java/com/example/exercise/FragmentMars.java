@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
@@ -21,6 +22,12 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.bumptech.glide.Glide;
+import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.components.YAxis;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.model.GradientColor;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -36,6 +43,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
@@ -79,6 +87,9 @@ public class FragmentMars extends Fragment {
     TextView mFd4DateView;
     TextView mFd5DateView;
     TextView mFd6DateView;
+
+    //**BarChart**
+    BarChart mFBarChart;
 
 
     public static FragmentMars newInstance(int number) {
@@ -130,6 +141,8 @@ public class FragmentMars extends Fragment {
         mFd5DateView = v.findViewById(R.id.md5Date);
         mFd6DateView = v.findViewById(R.id.md6Date);
 
+        //**Bar Chart**
+        mFBarChart = v.findViewById(R.id.mBarChart);
 
         new Thread(this::getJSON).start();
 
@@ -284,6 +297,7 @@ public class FragmentMars extends Fragment {
             ArrayList<String> maxTempArr = new ArrayList<>();
             ArrayList<String> minTempArr = new ArrayList<>();
             ArrayList<String> fDateArr = new ArrayList<>();
+
             for (int i = 0; i <= 6; i++) {
                 JSONObject obj = jsonArr.getJSONObject(i);
                 String maxTemp = obj.getString("max_temp");
@@ -293,6 +307,55 @@ public class FragmentMars extends Fragment {
                 minTempArr.add(minTemp);
                 fDateArr.add(fDate);
             }
+
+
+            new Thread(() -> {
+                ArrayList<Float> minTempFloatArr = new ArrayList<>();
+                ArrayList<Float> maxTempFloatArr = new ArrayList<>();
+
+                float minTempTot = 3000.F;
+                for (int i=0; i<=6; i++){
+                    float minTempDay = Float.parseFloat(minTempArr.get(i));
+                    if (minTempDay < minTempTot) minTempTot = minTempDay;
+                    minTempFloatArr.add(minTempDay);
+                    maxTempFloatArr.add(Float.parseFloat(maxTempArr.get(i)));
+                }
+
+                List<BarEntry> entries = new ArrayList<>();
+
+                entries.add(new BarEntry(6f, new float[] {maxTempFloatArr.get(0), minTempFloatArr.get(0)}));
+                entries.add(new BarEntry(5f, new float[] {maxTempFloatArr.get(1), minTempFloatArr.get(1)}));
+                entries.add(new BarEntry(4f, new float[] {maxTempFloatArr.get(2), minTempFloatArr.get(2)}));
+                entries.add(new BarEntry(3f, new float[] {maxTempFloatArr.get(3), minTempFloatArr.get(3)}));
+                entries.add(new BarEntry(2f, new float[] {maxTempFloatArr.get(4), minTempFloatArr.get(4)}));
+                entries.add(new BarEntry(1f, new float[] {maxTempFloatArr.get(5), minTempFloatArr.get(5)}));
+                entries.add(new BarEntry(0f, new float[] {maxTempFloatArr.get(6), minTempFloatArr.get(6)}));
+
+                BarDataSet bSet = new BarDataSet(entries, " ");
+                bSet.setDrawValues(false);
+                BarData bData = new BarData(bSet);
+                List<GradientColor> gradientColors = new ArrayList<>();
+                gradientColors.add(new GradientColor(Color.parseColor("#00FF5722"), Color.parseColor("#FFFF5722")));
+                gradientColors.add(new GradientColor(Color.parseColor("#FFFF5722"), Color.parseColor("#00FF5722")));
+                //bSet.setGradientColor(Color.parseColor("#00FF5722"),Color.parseColor("#FFFF5722"));
+                bSet.setGradientColors(gradientColors);
+                bData.setBarWidth(0.4f);
+
+                mFBarChart.setData(bData);
+                mFBarChart.setDescription(null);
+                mFBarChart.getXAxis().setEnabled(false);
+
+                YAxis left = mFBarChart.getAxisLeft();
+                left.setDrawLabels(false); // no axis labels
+                left.setDrawAxisLine(false); // no axis line
+                left.setDrawGridLines(false); // no grid lines
+                YAxis right = mFBarChart.getAxisRight();
+                right.setEnabled(false);
+                right.setDrawLabels(false); // no axis labels
+                right.setDrawAxisLine(false); // no axis line
+                right.setDrawGridLines(false); // no grid lines
+            }).start();
+
 
             getActivity().runOnUiThread(new Runnable() {
                 @Override
