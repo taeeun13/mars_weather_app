@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import com.github.mikephil.charting.charts.BarChart;
@@ -219,8 +218,8 @@ public class FragmentEarth extends Fragment {
                 double earthMinTemp = jsonTempObj.getDouble("min") - 273.15;
                 earthMaxTemp = Math.round(earthMaxTemp * 10) / 10.0;
                 earthMinTemp = Math.round(earthMinTemp * 10) / 10.0;
-                String earthMaxTempStr = Double.toString(earthMaxTemp);
-                String earthMinTempStr = Double.toString(earthMinTemp);
+                String earthMaxTempStr = String.format("%.0f",earthMaxTemp);
+                String earthMinTempStr = String.format("%.0f",earthMinTemp);
 
                 long forecastDTMillis = (jsonDailyObj.getLong("dt") + 32400L)* 1000L;
                 SimpleDateFormat timeFormat = new SimpleDateFormat("MM-dd");

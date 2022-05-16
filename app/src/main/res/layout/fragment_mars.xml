@@ -12,7 +12,7 @@
         android:layout_marginTop="24sp"
         android:text="@string/mars"
         android:textColor="#000000"
-        android:textSize="44sp"
+        android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/MarsDateText"
         app:layout_constraintEnd_toEndOf="parent"
@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
         android:textAlignment="center"
-        android:textSize="20sp"
+        android:textSize="16sp"
         android:text="Latest Date"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,9 +38,30 @@
         android:id="@+id/MtableLayout1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16sp"
+        android:layout_marginTop="0sp"
+        android:layout_marginLeft="80sp"
+        android:layout_marginRight="80sp"
         android:stretchColumns="0,1"
         app:layout_constraintTop_toBottomOf="@+id/MarsDateText">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="40sp"
+                android:layout_height="40sp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:src="@drawable/high_temperature" />
+
+            <ImageView
+                android:id="@+id/marsLowTempView"
+                android:layout_width="40sp"
+                android:layout_height="40sp"
+                android:src="@drawable/low_temperature" />
+        </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
@@ -53,7 +74,7 @@
                 android:text="MaxTemp"
                 android:textAlignment="center"
                 android:textColor="#000000"
-                android:textSize="40sp" />
+                android:textSize="25sp" />
 
             <TextView
                 android:id="@+id/MarsMinTemp"
@@ -62,15 +83,18 @@
                 android:text="MinTemp"
                 android:textAlignment="center"
                 android:textColor="#000000"
-                android:textSize="40sp" />
+                android:textSize="25sp" />
         </TableRow>
+
     </TableLayout>
 
     <TableLayout
         android:id="@+id/MtableLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24sp"
+        android:layout_marginTop="0sp"
+        android:layout_marginLeft="10sp"
+        android:layout_marginRight="10sp"
         android:stretchColumns="0,1,2,3"
         app:layout_constraintTop_toBottomOf="@+id/MtableLayout1">
 
@@ -82,36 +106,83 @@
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="Pressure"
-                android:textAlignment="center"
+                android:layout_weight="1"
                 android:gravity="center"
-                android:textSize="22sp" />
+                android:text="Pressure"
+                android:textColor="#000000"
+                android:textAlignment="center"
+                android:textSize="14sp" />
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/marsHighTempView"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="Sunrise"
-                android:textAlignment="center"
+                android:layout_weight="1"
                 android:gravity="center"
-                android:textSize="22sp" />
+                android:text="Sunrise"
+                android:textColor="#000000"
+                android:textAlignment="center"
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/textView3"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="Sunset"
-                android:textAlignment="center"
+                android:layout_weight="1"
                 android:gravity="center"
-                android:textSize="22sp" />
+                android:text="Sunset"
+                android:textColor="#000000"
+                android:textAlignment="center"
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/textView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="UV\n condition"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="UV Index"
                 android:textAlignment="center"
-                android:textSize="20sp" />
+                android:textColor="#000000"
+                android:textSize="14sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/pressureView"
+                android:layout_width="40sp"
+                android:layout_height="40sp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:src="@drawable/pressure" />
+
+            <ImageView
+                android:id="@+id/sunriseView"
+                android:layout_width="40sp"
+                android:layout_height="40sp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:src="@drawable/sunrise" />
+
+            <ImageView
+                android:id="@+id/sunsetView"
+                android:layout_width="40sp"
+                android:layout_height="40sp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:src="@drawable/moon" />
+
+            <ImageView
+                android:id="@+id/uvConditionView"
+                android:layout_width="40sp"
+                android:layout_height="40sp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:src="@drawable/sunglasses" />
+
         </TableRow>
 
         <TableRow
@@ -122,33 +193,37 @@
                 android:id="@+id/MarsPressure"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:textAlignment="center"
                 android:textColor="#000000"
-                android:textSize="24sp" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/MarsSunrise"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:textAlignment="center"
                 android:textColor="#000000"
-                android:textSize="24sp" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/MarsSunset"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:textAlignment="center"
                 android:textColor="#000000"
-                android:textSize="24sp" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/MarsUV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:textAlignment="center"
                 android:textColor="#000000"
-                android:textSize="24sp" />
+                android:textSize="14sp" />
         </TableRow>
 
 
@@ -157,7 +232,10 @@
         android:id="@+id/MtableLayout3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32sp"
+        android:layout_marginTop="0sp"
+        android:layout_marginLeft="6sp"
+        android:layout_marginRight="6sp"
+        android:layout_marginBottom="32sp"
         android:stretchColumns="0,1,2,3,4,5"
         app:layout_constraintTop_toBottomOf="@+id/MtableLayout2">
 
@@ -169,63 +247,70 @@
                 android:id="@+id/md6MaxTemp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="@string/d6maxtemp"
                 android:textColor="#000000"
                 android:textAlignment="center"
-                android:textSize="24sp" />
+                android:textSize="20sp" />
             <TextView
                 android:id="@+id/md5MaxTemp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="@string/d5maxtemp"
                 android:textColor="#000000"
                 android:textAlignment="center"
-                android:textSize="24sp" />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/md4MaxTemp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="@string/d4maxtemp"
                 android:textColor="#000000"
                 android:textAlignment="center"
-                android:textSize="24sp" />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/md3MaxTemp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="@string/d3maxtemp"
                 android:textColor="#000000"
                 android:textAlignment="center"
-                android:textSize="24sp" />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/md2MaxTemp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="@string/d2maxtemp"
                 android:textColor="#000000"
                 android:textAlignment="center"
-                android:textSize="24sp" />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/md1MaxTemp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="@string/d1maxtemp"
                 android:textColor="#000000"
                 android:textAlignment="center"
-                android:textSize="24sp" />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/md0MaxTemp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="@string/d0maxtemp"
                 android:textColor="#000000"
                 android:textAlignment="center"
-                android:textSize="24sp" />
+                android:textSize="20sp" />
 
         </TableRow>
 
@@ -252,64 +337,71 @@
                 android:id="@+id/md6MinTemp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="@string/d6mintemp"
                 android:textColor="#000000"
                 android:textAlignment="center"
-                android:textSize="24sp" />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/md5MinTemp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="@string/d5mintemp"
                 android:textColor="#000000"
                 android:textAlignment="center"
-                android:textSize="24sp" />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/md4MinTemp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="@string/d4mintemp"
                 android:textColor="#000000"
                 android:textAlignment="center"
-                android:textSize="24sp" />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/md3MinTemp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="@string/d3mintemp"
                 android:textColor="#000000"
                 android:textAlignment="center"
-                android:textSize="24sp" />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/md2MinTemp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="@string/d2mintemp"
                 android:textColor="#000000"
                 android:textAlignment="center"
-                android:textSize="24sp" />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/md1MinTemp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="@string/d1mintemp"
                 android:textColor="#000000"
                 android:textAlignment="center"
-                android:textSize="24sp" />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/md0MinTemp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="@string/d0mintemp"
                 android:textColor="#000000"
                 android:textAlignment="center"
-                android:textSize="24sp" />
+                android:textSize="20sp" />
 
         </TableRow>
 
@@ -327,50 +419,57 @@
                 android:id="@+id/md6Date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:textAlignment="center"
-                android:textSize="20sp" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/md5Date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:textAlignment="center"
-                android:textSize="20sp" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/md4Date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:textAlignment="center"
-                android:textSize="20sp" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/md3Date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:textAlignment="center"
-                android:textSize="20sp" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/md2Date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:textAlignment="center"
-                android:textSize="20sp" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/md1Date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:textAlignment="center"
-                android:textSize="20sp" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/md0Date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:textAlignment="center"
-                android:textSize="20sp" />
+                android:textSize="16sp" />
 
         </TableRow>
     </TableLayout>
