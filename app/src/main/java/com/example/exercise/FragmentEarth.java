@@ -302,7 +302,19 @@ public class FragmentEarth extends Fragment {
             long earthSunriseMillis = (jsonCurrentObj.getLong("sunrise") + 32400L)* 1000L;
             long earthSunsetMillis = (jsonCurrentObj.getLong("sunset") + 32400L) * 1000L;
             double earthUV = jsonCurrentObj.getDouble("uvi");
-            String earthUVStr = Double.toString(earthUV);
+            String earthUVStr;
+            if (earthUV < 3){
+                earthUVStr = "Low";
+            } else if (earthUV >= 3 && earthUV < 6){
+                earthUVStr = "Moderate";
+            }else if (earthUV >= 6 && earthUV < 8){
+                earthUVStr = "High";
+            } else if (earthUV >= 8 && earthUV < 10){
+                earthUVStr = "Very High";
+            } else{
+                earthUVStr = "error";
+            }
+
             Log.d("data", earthUVStr);
 
             SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
