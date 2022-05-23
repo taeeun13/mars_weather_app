@@ -14,13 +14,11 @@
         android:textColor="#000000"
         android:textSize="36sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/MarsDateText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/MarsDateText"
@@ -38,11 +36,10 @@
         android:id="@+id/MtableLayout1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="0sp"
-        android:layout_marginLeft="80sp"
-        android:layout_marginRight="80sp"
         android:stretchColumns="0,1"
-        app:layout_constraintTop_toBottomOf="@+id/MarsDateText">
+        android:layout_marginTop="20sp"
+        app:layout_constraintTop_toBottomOf="@+id/MarsDateText"
+        tools:layout_editor_absoluteX="80dp">
 
         <TableRow
             android:layout_width="match_parent"
@@ -92,10 +89,10 @@
         android:id="@+id/MtableLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="0sp"
+        android:layout_marginTop="20sp"
         android:layout_marginLeft="10sp"
         android:layout_marginRight="10sp"
-        android:stretchColumns="0,1,2,3"
+        android:stretchColumns="0,1,2,3,4,5,6,7,8"
         app:layout_constraintTop_toBottomOf="@+id/MtableLayout1">
 
         <TableRow
@@ -232,16 +229,18 @@
         android:id="@+id/MtableLayout3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="0sp"
+        android:layout_marginTop="20sp"
         android:layout_marginLeft="6sp"
         android:layout_marginRight="6sp"
         android:layout_marginBottom="32sp"
-        android:stretchColumns="0,1,2,3,4,5"
+        android:stretchColumns="0,1,2,3,4,5,6"
         app:layout_constraintTop_toBottomOf="@+id/MtableLayout2">
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15sp"
+            android:layout_marginEnd="15sp">
 
             <TextView
                 android:id="@+id/md6MaxTemp"
@@ -312,6 +311,7 @@
                 android:textAlignment="center"
                 android:textSize="20sp" />
 
+
         </TableRow>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -331,7 +331,9 @@
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15sp"
+            android:layout_marginEnd="15sp">
 
             <TextView
                 android:id="@+id/md6MinTemp"
@@ -405,15 +407,12 @@
 
         </TableRow>
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-        </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15sp"
+            android:layout_marginEnd="15sp">
 
             <TextView
                 android:id="@+id/md6Date"
@@ -473,6 +472,22 @@
 
         </TableRow>
     </TableLayout>
+
+    <TextView
+        android:id="@+id/pictogramBy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6sp"
+        android:text="Pictograms by 'Chanut is Industries', 'Andi Nur Abdillah' \nand 'Daniela Baptista' from NounProject.com"
+        android:textAlignment="center"
+        android:textSize="10sp"
+        android:textColor="#CCCCCC"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/MtableLayout3"
+        app:layout_constraintVertical_bias="0.111" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/infoBtn"
