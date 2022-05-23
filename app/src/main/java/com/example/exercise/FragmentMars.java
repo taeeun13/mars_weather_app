@@ -166,7 +166,7 @@ public class FragmentMars extends Fragment {
         builder.setView(image);
 
         builder.setTitle("Information");
-        builder.setMessage(Html.fromHtml("<p>\nInstrument: Mars Curiosity Rover\n\nCurrent Location:\n,<a href=\"https://mars.nasa.gov/maps/location/?mission=Curiosity\">Click here</a></p><p>\nLatest photo from curiosity rover:</p>"));
+        builder.setMessage(Html.fromHtml("<p>\nInstrument: Mars Curiosity Rover\n\nCurrent Location:\n<a href=\"https://mars.nasa.gov/maps/location/?mission=Curiosity\">Click here</a></p><p>\nLatest photo from curiosity rover:</p>"));
         builder.setNeutralButton("close", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int which) {
