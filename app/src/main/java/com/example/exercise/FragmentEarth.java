@@ -299,8 +299,8 @@ public class FragmentEarth extends Fragment {
             //*1000: msec -> sec
             JSONObject jsonCurrentObj = (JSONObject) jsonObj.get("current");
             String earthPressure = jsonCurrentObj.getString("pressure");
-            long earthSunriseMillis = (jsonCurrentObj.getLong("sunrise") + 32400L)* 1000L;
-            long earthSunsetMillis = (jsonCurrentObj.getLong("sunset") + 32400L) * 1000L;
+            long earthSunriseMillis = (jsonCurrentObj.getLong("sunrise") )* 1000L;
+            long earthSunsetMillis = (jsonCurrentObj.getLong("sunset") ) * 1000L;
             double earthUV = jsonCurrentObj.getDouble("uvi");
             String earthUVStr;
             if (earthUV < 3){
