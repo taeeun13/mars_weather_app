@@ -251,7 +251,7 @@ public class FragmentEarth extends Fragment {
                     float y1 = maxTempTot - maxTempFloatArr.get(i);
                     float y2 = maxTempFloatArr.get(i) - minTempFloatArr.get(i);
                     float y3 = minTempFloatArr.get(i) - minTempTot;
-                    entries.add(new BarEntry(6-i, new float[] {y1, y2, y3}));
+                    entries.add(new BarEntry(i, new float[] {y3, y2, y1}));
                 }
 
                 BarDataSet bSet = new BarDataSet(entries, " ");
