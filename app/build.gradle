@@ -15,6 +15,14 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    packagingOptions {
+        exclude 'META-INF/services/javax.annotation.processing.Processor'
+    }
+
+    testOptions{
+        unitTests.includeAndroidResources = true
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -28,15 +36,21 @@ android {
 }
 
 dependencies {
-
     implementation 'androidx.appcompat:appcompat:1.4.1'
     implementation 'com.google.android.material:material:1.5.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
     implementation 'androidx.viewpager2:viewpager2:1.0.0-alpha04'
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
-    testImplementation 'junit:junit:4.13.2'
     implementation 'com.github.bumptech.glide:glide:4.12.0'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    implementation 'androidx.fragment:fragment:1.5.0-rc01'
+
+    androidTestImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'com.google.truth:truth:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+    androidTestImplementation 'androidx.test:core:1.1.0'
+    androidTestImplementation 'androidx.test:runner:1.1.1'
+    androidTestImplementation 'androidx.test:rules:1.1.1'
+
+    debugImplementation 'androidx.fragment:fragment-testing:1.5.0-rc01'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
 }
