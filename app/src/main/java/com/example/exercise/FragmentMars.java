@@ -155,11 +155,11 @@ public class FragmentMars extends Fragment {
         return v;
     }
 
-    public void show(String curiosityLocLink) throws IOException {
-        Log.d("link", curiosityLocLink);
+    public void show(String curiosityPicLink) throws IOException {
+        Log.d("link", curiosityPicLink);
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         ImageView image = new ImageView(getActivity());
-        Glide.with(getActivity()).load(curiosityLocLink).override(900, 900).into(image);
+        Glide.with(getActivity()).load(curiosityPicLink).override(900, 900).into(image);
 
         builder.setView(image);
 
@@ -185,7 +185,7 @@ public class FragmentMars extends Fragment {
 
     public class MyOnClickListener implements View.OnClickListener {
         ExecutorService executor = Executors.newSingleThreadExecutor();
-        Callable<String> getCuriosityLoc = new Callable<String>() {
+        Callable<String> getCuriosityPic = new Callable<String>() {
             @Override
             public String call() throws IOException, JSONException {
                 String text = null;
@@ -216,8 +216,8 @@ public class FragmentMars extends Fragment {
             }
         };
 
-        Future<String> future = executor.submit(getCuriosityLoc);
-        String loc = future.get(); // use future
+        Future<String> future = executor.submit(getCuriosityPic);
+        String pic = future.get(); // use future
 
         public MyOnClickListener() throws ExecutionException, InterruptedException {
         }
@@ -225,7 +225,7 @@ public class FragmentMars extends Fragment {
         @Override
         public void onClick(View v) {
             try {
-                show(loc);
+                show(pic);
             } catch (IOException e) {
                 e.printStackTrace();
             }
