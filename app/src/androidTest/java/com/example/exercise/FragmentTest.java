@@ -90,6 +90,7 @@ public class FragmentTest extends TestCase {
         onView(withId(R.id.md5Date)).check(matches(isDisplayed()));
         onView(withId(R.id.md6Date)).check(matches(isDisplayed()));
         onView(withId(R.id.mBarChart)).check(matches(isDisplayed()));
+        onView(withId(R.id.infoBtn)).check(matches(isDisplayed()));
     }
 
     //recreate fragment test
@@ -116,6 +117,12 @@ public class FragmentTest extends TestCase {
     public void testMoveStateFragmentMars() {
         FragmentScenario<FragmentEarth> earthScenario = FragmentScenario.launchInContainer(FragmentEarth.class);
         earthScenario.moveToState(Lifecycle.State.RESUMED);
+    }
+
+    @Test
+    public void testDialogFragment() {
+        FragmentScenario<FragmentMars> marsScenario = FragmentScenario.launchInContainer(FragmentMars.class);
+        onView(withId(R.id.infoBtn)).perform(click());
     }
 
 
