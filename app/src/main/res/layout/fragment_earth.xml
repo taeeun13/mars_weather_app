@@ -10,10 +10,10 @@
         android:id="@+id/EarthText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24sp"
+        android:layout_marginTop="24dp"
         android:text="@string/earth"
         android:textColor="#000000"
-        android:textSize="36sp"
+        android:textSize="36dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/EarthDateText"
         app:layout_constraintEnd_toEndOf="parent"
@@ -30,7 +30,7 @@
         android:layout_marginTop="0dp"
         android:text="Latest Date"
         android:textAlignment="center"
-        android:textSize="16sp"
+        android:textSize="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/EarthText" />
@@ -39,9 +39,9 @@
         android:id="@+id/EtableLayout1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20sp"
-        android:layout_marginLeft="80sp"
-        android:layout_marginRight="80sp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginRight="80dp"
         android:stretchColumns="0,1"
         app:layout_constraintTop_toBottomOf="@+id/EarthDateText">
 
@@ -51,16 +51,16 @@
 
             <ImageView
                 android:id="@+id/imageView4"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:src="@drawable/high_temperature" />
 
             <ImageView
                 android:id="@+id/marsLowTempView"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:src="@drawable/low_temperature" />
@@ -77,7 +77,7 @@
                 android:text="MaxTemp"
                 android:textAlignment="center"
                 android:textColor="#000000"
-                android:textSize="25sp" />
+                android:textSize="25dp" />
 
             <TextView
                 android:id="@+id/EarthMinTemp"
@@ -86,7 +86,7 @@
                 android:text="MinTemp"
                 android:textAlignment="center"
                 android:textColor="#000000"
-                android:textSize="25sp" />
+                android:textSize="25dp" />
         </TableRow>
     </TableLayout>
 
@@ -94,9 +94,9 @@
         android:id="@+id/EtableLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20sp"
-        android:layout_marginLeft="10sp"
-        android:layout_marginRight="10sp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:stretchColumns="0,1,2,3"
         app:layout_constraintTop_toBottomOf="@+id/EtableLayout1">
 
@@ -113,7 +113,7 @@
             android:text="Pressure"
             android:textColor="#000000"
             android:textAlignment="center"
-            android:textSize="14sp" />
+            android:textSize="14dp" />
 
         <TextView
             android:id="@+id/marsHighTempView"
@@ -124,7 +124,7 @@
             android:text="Sunrise"
             android:textColor="#000000"
             android:textAlignment="center"
-            android:textSize="14sp" />
+            android:textSize="14dp" />
 
         <TextView
             android:id="@+id/textView3"
@@ -135,7 +135,7 @@
             android:text="Sunset"
             android:textColor="#000000"
             android:textAlignment="center"
-            android:textSize="14sp" />
+            android:textSize="14dp" />
 
         <TextView
             android:id="@+id/textView4"
@@ -146,7 +146,7 @@
             android:text="UV Index"
             android:textAlignment="center"
             android:textColor="#000000"
-            android:textSize="14sp" />
+            android:textSize="14dp" />
         </TableRow>
 
         <TableRow
@@ -155,32 +155,32 @@
 
             <ImageView
                 android:id="@+id/pressureView"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:src="@drawable/pressure" />
 
             <ImageView
                 android:id="@+id/sunriseView"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:src="@drawable/sunrise" />
 
             <ImageView
                 android:id="@+id/sunsetView"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:src="@drawable/moon" />
 
             <ImageView
                 android:id="@+id/uvConditionView"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:src="@drawable/sunglasses" />
@@ -198,7 +198,7 @@
                 android:textAlignment="center"
                 android:layout_weight="1"
                 android:textColor="#000000"
-                android:textSize="14sp" />
+                android:textSize="14dp" />
 
             <TextView
                 android:id="@+id/EarthSunrise"
@@ -207,7 +207,7 @@
                 android:layout_weight="1"
                 android:textAlignment="center"
                 android:textColor="#000000"
-                android:textSize="14sp" />
+                android:textSize="14dp" />
 
             <TextView
                 android:id="@+id/EarthSunset"
@@ -216,7 +216,7 @@
                 android:layout_weight="1"
                 android:textAlignment="center"
                 android:textColor="#000000"
-                android:textSize="14sp" />
+                android:textSize="14dp" />
 
             <TextView
                 android:id="@+id/EarthUV"
@@ -225,7 +225,7 @@
                 android:layout_weight="1"
                 android:textAlignment="center"
                 android:textColor="#000000"
-                android:textSize="14sp" />
+                android:textSize="14dp" />
         </TableRow>
     </TableLayout>
 
@@ -233,18 +233,18 @@
         android:id="@+id/MtableLayout3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20sp"
-        android:layout_marginLeft="6sp"
-        android:layout_marginRight="6sp"
-        android:layout_marginBottom="32sp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="6dp"
+        android:layout_marginRight="6dp"
+        android:layout_marginBottom="32dp"
         android:stretchColumns="0,1,2,3,4,5,6"
         app:layout_constraintTop_toBottomOf="@+id/EtableLayout2">
 
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15sp"
-            android:layout_marginEnd="15sp">
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp">
 
             <TextView
                 android:id="@+id/d0MaxTemp"
@@ -254,7 +254,7 @@
                 android:textColor="#000000"
                 android:textAlignment="center"
                 android:layout_weight="1"
-                android:textSize="20sp" />
+                android:textSize="20dp" />
             <TextView
                 android:id="@+id/d1MaxTemp"
                 android:layout_width="wrap_content"
@@ -263,7 +263,7 @@
                 android:textColor="#000000"
                 android:textAlignment="center"
                 android:layout_weight="1"
-                android:textSize="20sp" />
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/d2MaxTemp"
@@ -273,7 +273,7 @@
                 android:textColor="#000000"
                 android:textAlignment="center"
                 android:layout_weight="1"
-                android:textSize="20sp" />
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/d3MaxTemp"
@@ -283,7 +283,7 @@
                 android:textColor="#000000"
                 android:textAlignment="center"
                 android:layout_weight="1"
-                android:textSize="20sp" />
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/d4MaxTemp"
@@ -293,7 +293,7 @@
                 android:textColor="#000000"
                 android:textAlignment="center"
                 android:layout_weight="1"
-                android:textSize="20sp" />
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/d5MaxTemp"
@@ -303,7 +303,7 @@
                 android:textColor="#000000"
                 android:textAlignment="center"
                 android:layout_weight="1"
-                android:textSize="20sp" />
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/d6MaxTemp"
@@ -313,7 +313,7 @@
                 android:textColor="#000000"
                 android:textAlignment="center"
                 android:layout_weight="1"
-                android:textSize="20sp" />
+                android:textSize="20dp" />
 
         </TableRow>
 
@@ -335,8 +335,8 @@
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15sp"
-            android:layout_marginEnd="15sp">
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp">
 
             <TextView
                 android:id="@+id/d0MinTemp"
@@ -346,7 +346,7 @@
                 android:textColor="#000000"
                 android:textAlignment="center"
                 android:layout_weight="1"
-                android:textSize="20sp" />
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/d1MinTemp"
@@ -356,7 +356,7 @@
                 android:textColor="#000000"
                 android:textAlignment="center"
                 android:layout_weight="1"
-                android:textSize="20sp" />
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/d2MinTemp"
@@ -366,7 +366,7 @@
                 android:textColor="#000000"
                 android:textAlignment="center"
                 android:layout_weight="1"
-                android:textSize="20sp" />
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/d3MinTemp"
@@ -376,7 +376,7 @@
                 android:textColor="#000000"
                 android:textAlignment="center"
                 android:layout_weight="1"
-                android:textSize="20sp" />
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/d4MinTemp"
@@ -386,7 +386,7 @@
                 android:textColor="#000000"
                 android:textAlignment="center"
                 android:layout_weight="1"
-                android:textSize="20sp" />
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/d5MinTemp"
@@ -396,7 +396,7 @@
                 android:textColor="#000000"
                 android:textAlignment="center"
                 android:layout_weight="1"
-                android:textSize="20sp" />
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/d6MinTemp"
@@ -406,7 +406,7 @@
                 android:textColor="#000000"
                 android:textAlignment="center"
                 android:layout_weight="1"
-                android:textSize="20sp" />
+                android:textSize="20dp" />
 
         </TableRow>
 
@@ -414,8 +414,8 @@
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15sp"
-            android:layout_marginEnd="15sp">
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp">
 
             <TextView
                 android:id="@+id/d0day"
@@ -423,7 +423,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textAlignment="center"
-                android:textSize="16sp" />
+                android:textSize="16dp" />
 
             <TextView
                 android:id="@+id/d1day"
@@ -431,7 +431,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textAlignment="center"
-                android:textSize="16sp" />
+                android:textSize="16dp" />
 
             <TextView
                 android:id="@+id/d2day"
@@ -439,7 +439,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textAlignment="center"
-                android:textSize="16sp" />
+                android:textSize="16dp" />
 
             <TextView
                 android:id="@+id/d3day"
@@ -447,7 +447,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textAlignment="center"
-                android:textSize="16sp" />
+                android:textSize="16dp" />
 
             <TextView
                 android:id="@+id/d4day"
@@ -455,7 +455,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textAlignment="center"
-                android:textSize="16sp" />
+                android:textSize="16dp" />
 
             <TextView
                 android:id="@+id/d5day"
@@ -463,7 +463,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textAlignment="center"
-                android:textSize="16sp" />
+                android:textSize="16dp" />
 
             <TextView
                 android:id="@+id/d6day"
@@ -471,7 +471,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textAlignment="center"
-                android:textSize="16sp" />
+                android:textSize="16dp" />
 
         </TableRow>
     </TableLayout>
@@ -480,10 +480,10 @@
         android:id="@+id/pictogramBy"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="6sp"
+        android:layout_marginTop="6dp"
         android:text="Pictograms by 'Chanut is Industries', 'Andi Nur Abdillah' \nand 'Daniela Baptista' from NounProject.com\n@Seoul"
         android:textAlignment="center"
-        android:textSize="10sp"
+        android:textSize="10dp"
         android:textColor="#CCCCCC"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
