@@ -1,5 +1,5 @@
 # mars_weather_app
-2022-1 캡스톤 디자인 팀3 
+2022-1 Capstone Designe Team3 
 # Application Preview
 You can check Mars weather and Earth weather. 
 ## Mars
