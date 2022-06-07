@@ -1,5 +1,5 @@
 # mars_weather_app
-2022-1 캡스톤 디자인 팀3 
+2022-1 Capstone Designe Team3 
 # Application Preview
 You can check Mars weather and Earth weather. 
 ## Mars
@@ -20,6 +20,6 @@ Version1 : 2022-05-31
 If you want to download this application, [Click Here](https://drive.google.com/drive/folders/1IA07mKfbYD7AzwsGxb4kymSQ76tXgmqS?usp=sharing).
 ## source
 - Mars Weather API : NASA Curiosity rover 
-- Earth Weather API : World Weather API
+- Earth Weather API : Open Weather API
 - Pictogram : Pictograms by 'Chanut is Industries', 'Andi Nur Abdillah' and 'Daniela Baptista' from NounProject.com
 - App icon : NASA
